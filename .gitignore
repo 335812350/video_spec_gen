@@ -7,7 +7,9 @@ outputs/
 videos/
 projects/**/assets/
 projects/**/generated/
-projects/**/hyperframes/assets/`r`nprojects/**/snapshots/`r`nprojects/**/.thumbnails/
+projects/**/hyperframes/assets/
+projects/**/snapshots/
+projects/**/.thumbnails/
 *.mp4
 *.mov
 *.mkv
