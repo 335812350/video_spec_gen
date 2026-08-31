@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>年会不能停！电视端起播推荐</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #070707; }
+      @font-face { font-family: "Microsoft YaHei"; src: local("Microsoft YaHei"); }
+      body { font-family: Arial, "Microsoft YaHei", sans-serif; color: #f4f1ea; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #070707; }
+      .film { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; background: #070707; }
+      .shade { position: absolute; inset: 0; z-index: 20; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.03) 38%, rgba(0,0,0,.46)); }
+      .rail { position: absolute; z-index: 30; top: 64px; left: 86px; right: 86px; display: flex; justify-content: space-between; align-items: center; color: rgba(244,241,234,.82); font-size: 24px; letter-spacing: 1px; pointer-events: none; }
+      .rail strong { color: #f5b73b; font-weight: 800; }
+      .bottom-line { position: absolute; z-index: 30; left: 86px; right: 86px; bottom: 70px; height: 2px; background: rgba(245,183,59,.6); pointer-events: none; }
+      .caption { position: absolute; z-index: 40; left: 96px; right: 96px; bottom: 112px; max-width: 1040px; padding: 12px 20px 14px; border-left: 6px solid #f5b73b; background: rgba(5,5,5,.78); color: #fff7df; font-size: 38px; line-height: 1.22; font-weight: 800; text-shadow: 0 3px 16px rgba(0,0,0,.95); pointer-events: none; }
+      .tag { position: absolute; z-index: 40; top: 158px; left: 96px; padding: 10px 18px; border-left: 5px solid #f5b73b; background: rgba(5,5,5,.72); color: #fff7df; font-size: 30px; font-weight: 800; pointer-events: none; }
+      .tag.right { left: auto; right: 96px; border-left: 0; border-right: 5px solid #f5b73b; text-align: right; }
+      .keyword { position: absolute; z-index: 40; top: 158px; right: 116px; color: #f5b73b; font-size: 38px; font-weight: 900; text-shadow: 0 4px 14px rgba(0,0,0,.96); pointer-events: none; }
+      .keyword.red { color: #e16b5b; }
+      .big-card { position: absolute; z-index: 45; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #070707; pointer-events: none; }
+      .big-card h1 { margin: 0; color: #f4f1ea; font-size: 116px; line-height: 1; font-weight: 900; letter-spacing: 2px; }
+      .big-card h1 em { color: #f5b73b; font-style: normal; }
+      .big-card p { margin: 24px 0 0; color: rgba(244,241,234,.74); font-size: 36px; letter-spacing: 2px; }
+      .number-card { position: absolute; z-index: 45; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #0d0d0d; pointer-events: none; }
+      .number-card .number { color: #f5b73b; font-size: 190px; line-height: .9; font-weight: 900; }
+      .number-card .label { margin-top: 22px; font-size: 42px; font-weight: 800; }
+      .number-card .source { margin-top: 12px; color: rgba(244,241,234,.6); font-size: 22px; }
+      .flash { position: absolute; z-index: 60; inset: 0; display: flex; justify-content: center; align-items: center; background: #fff; color: #111; font-size: 70px; font-weight: 900; pointer-events: none; }
+      .quote { position: absolute; z-index: 45; inset: 0; display: flex; justify-content: center; align-items: center; background: rgba(7,7,7,.84); color: #f5b73b; font-size: 82px; font-weight: 900; pointer-events: none; }
+      .cta { position: absolute; z-index: 50; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #070707; pointer-events: none; }
+      .cta h1 { margin: 0; font-size: 112px; line-height: 1; letter-spacing: 3px; }
+      .cta .sub { margin-top: 28px; color: #f5b73b; font-size: 44px; font-weight: 800; }
+      .cta .action { margin-top: 28px; color: rgba(244,241,234,.72); font-size: 30px; }
+      .clip { pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-efpi" id="root" data-composition-id="main" data-no-timeline="" data-start="0" data-duration="60" data-width="1920" data-height="1080" data-fps="60">
+      <div data-hf-id="hf-qzq8" class="rail"><strong data-hf-id="hf-nuiu">今晚推荐</strong><span data-hf-id="hf-5b62">黑色职场喜剧 · 高光放送</span></div>
+      <div data-hf-id="hf-j654" class="bottom-line"></div>
+      <div data-hf-id="hf-q0n7" class="shade"></div>
+
+      <video data-hf-id="hf-blvl" id="v01" class="film" src="assets/年会不能停！.mp4" data-start="0" data-duration="2" data-media-start="307" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-ylcf" id="v02" class="film" src="assets/年会不能停！.mp4" data-start="2" data-duration="3" data-media-start="330" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-7rrt" id="v03" class="film" src="assets/年会不能停！.mp4" data-start="7" data-duration="3" data-media-start="1043" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-kx7m" id="v04" class="film" src="assets/年会不能停！.mp4" data-start="10" data-duration="3" data-media-start="1140" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-uj95" id="v05" class="film" src="assets/年会不能停！.mp4" data-start="13" data-duration="3" data-media-start="603" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-ki3u" id="v06" class="film" src="assets/年会不能停！.mp4" data-start="18" data-duration="3" data-media-start="1722" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-esfa" id="v07" class="film" src="assets/年会不能停！.mp4" data-start="21" data-duration="3.5" data-media-start="813" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-dz56" id="v08" class="film" src="assets/年会不能停！.mp4" data-start="24.5" data-duration="3" data-media-start="875" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-k83p" id="v09" class="film" src="assets/年会不能停！.mp4" data-start="27.5" data-duration="3" data-media-start="2513" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-v7di" id="v10" class="film" src="assets/年会不能停！.mp4" data-start="34" data-duration="3" data-media-start="4216" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-7mq4" id="v11" class="film" src="assets/年会不能停！.mp4" data-start="37" data-duration="3" data-media-start="4425" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-525z" id="v12" class="film" src="assets/年会不能停！.mp4" data-start="40" data-duration="3" data-media-start="5350" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-z7gt" id="v13" class="film" src="assets/年会不能停！.mp4" data-start="44" data-duration="4" data-media-start="6140" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-r4ge" id="v14" class="film" src="assets/年会不能停！.mp4" data-start="48" data-duration="4" data-media-start="6241" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-4h4y" id="v15" class="film" src="assets/年会不能停！.mp4" data-start="52" data-duration="5" data-media-start="6378" data-track-index="0" muted playsinline preload="auto"></video>
+      <video data-hf-id="hf-enov" id="v16" class="film" src="assets/年会不能停！.mp4" data-start="57" data-duration="3" data-media-start="6481" data-track-index="0" muted playsinline preload="auto"></video>
+
+      <audio data-hf-id="hf-u51y" id="a01" src="assets/年会不能停！.mp4" data-start="0" data-duration="2" data-media-start="307" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.28},{&quot;t&quot;:2,&quot;v&quot;:0.28}]}]}"></audio>
+      <audio data-hf-id="hf-ba4s" id="a02" src="assets/年会不能停！.mp4" data-start="2" data-duration="3" data-media-start="330" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.16},{&quot;t&quot;:3,&quot;v&quot;:0.16}]}]}"></audio>
+      <audio data-hf-id="hf-2jhe" id="a03" src="assets/年会不能停！.mp4" data-start="7" data-duration="3" data-media-start="1043" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.18},{&quot;t&quot;:3,&quot;v&quot;:0.18}]}]}"></audio>
+      <audio data-hf-id="hf-onlb" id="a04" src="assets/年会不能停！.mp4" data-start="10" data-duration="3" data-media-start="1140" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.16},{&quot;t&quot;:3,&quot;v&quot;:0.16}]}]}"></audio>
+      <audio data-hf-id="hf-qoxa" id="a05" src="assets/年会不能停！.mp4" data-start="13" data-duration="3" data-media-start="603" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.12},{&quot;t&quot;:3,&quot;v&quot;:0.12}]}]}"></audio>
+      <audio data-hf-id="hf-rejf" id="a06" src="assets/年会不能停！.mp4" data-start="18" data-duration="3" data-media-start="1722" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.16},{&quot;t&quot;:3,&quot;v&quot;:0.16}]}]}"></audio>
+      <audio data-hf-id="hf-wdqb" id="a07" src="assets/年会不能停！.mp4" data-start="21" data-duration="3.5" data-media-start="813" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.1},{&quot;t&quot;:3.5,&quot;v&quot;:0.1}]}]}"></audio>
+      <audio data-hf-id="hf-1gpz" id="a08" src="assets/年会不能停！.mp4" data-start="24.5" data-duration="3" data-media-start="875" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.14},{&quot;t&quot;:3,&quot;v&quot;:0.14}]}]}"></audio>
+      <audio data-hf-id="hf-vld2" id="a09" src="assets/年会不能停！.mp4" data-start="27.5" data-duration="3" data-media-start="2513" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.16},{&quot;t&quot;:3,&quot;v&quot;:0.16}]}]}"></audio>
+      <audio data-hf-id="hf-tsk3" id="a10" src="assets/年会不能停！.mp4" data-start="34" data-duration="3" data-media-start="4216" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.16},{&quot;t&quot;:3,&quot;v&quot;:0.16}]}]}"></audio>
+      <audio data-hf-id="hf-fe91" id="a11" src="assets/年会不能停！.mp4" data-start="37" data-duration="3" data-media-start="4425" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.15},{&quot;t&quot;:3,&quot;v&quot;:0.15}]}]}"></audio>
+      <audio data-hf-id="hf-af60" id="a12" src="assets/年会不能停！.mp4" data-start="40" data-duration="3" data-media-start="5350" data-volume="0.72" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.15},{&quot;t&quot;:2.2,&quot;v&quot;:0.15},{&quot;t&quot;:2.35,&quot;v&quot;:0.68},{&quot;t&quot;:3,&quot;v&quot;:0.68}]}]}"></audio>
+      <audio data-hf-id="hf-qrwt" id="a13" src="assets/年会不能停！.mp4" data-start="44" data-duration="4" data-media-start="6140" data-volume="0.82" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.72},{&quot;t&quot;:4,&quot;v&quot;:0.72}]}]}"></audio>
+      <audio data-hf-id="hf-n1y8" id="a14" src="assets/年会不能停！.mp4" data-start="48" data-duration="4" data-media-start="6241" data-volume="0.95" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.9},{&quot;t&quot;:4,&quot;v&quot;:0.9}]}]}"></audio>
+      <audio data-hf-id="hf-4724" id="a15" src="assets/年会不能停！.mp4" data-start="52" data-duration="5" data-media-start="6378" data-volume="0.95" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.9},{&quot;t&quot;:5,&quot;v&quot;:0.9}]}]}"></audio>
+      <audio data-hf-id="hf-4qve" id="a16" src="assets/年会不能停！.mp4" data-start="57" data-duration="3" data-media-start="6481" data-volume="0.78" data-track-index="10" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.62},{&quot;t&quot;:2.3,&quot;v&quot;:0.62},{&quot;t&quot;:3,&quot;v&quot;:0.08}]}]}"></audio>
+
+      <audio data-hf-id="hf-kwk9" id="voiceover" src="assets/voiceover-zh-CN.mp3" data-start="0" data-duration="42.2" data-volume="1" data-track-index="20"></audio>
+      <audio data-hf-id="hf-f8pf" id="bgm" src="assets/office-groove.wav" data-start="0" data-duration="60" data-volume="0.2" data-track-index="30" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.16},{&quot;t&quot;:7,&quot;v&quot;:0.11},{&quot;t&quot;:13,&quot;v&quot;:0.1},{&quot;t&quot;:18,&quot;v&quot;:0.12},{&quot;t&quot;:21,&quot;v&quot;:0.06},{&quot;t&quot;:24.5,&quot;v&quot;:0.1},{&quot;t&quot;:34,&quot;v&quot;:0.15},{&quot;t&quot;:40,&quot;v&quot;:0.12},{&quot;t&quot;:43,&quot;v&quot;:0.05},{&quot;t&quot;:44,&quot;v&quot;:0.04},{&quot;t&quot;:52,&quot;v&quot;:0.03},{&quot;t&quot;:57,&quot;v&quot;:0.14},{&quot;t&quot;:59,&quot;v&quot;:0.08},{&quot;t&quot;:60,&quot;v&quot;:0}]}]}"></audio>
+
+      <div data-hf-id="hf-xj8u" id="card-hq" class="clip big-card" data-start="5" data-duration="2"><h1 data-hf-id="hf-m3fm"><em data-hf-id="hf-gliu">调去总部</em></h1><p data-hf-id="hf-7g1n">一个钳工的职场错位</p></div>
+      <div data-hf-id="hf-sspb" id="tag-trade" class="clip tag" data-start="7" data-duration="3">20多年钳工</div>
+      <div data-hf-id="hf-ouy3" id="tag-jargon" class="clip keyword" data-start="10" data-duration="3">学黑话</div>
+      <div data-hf-id="hf-y3og" id="card-three" class="clip number-card" data-start="16" data-duration="2"><div data-hf-id="hf-l328" class="number">3</div><div data-hf-id="hf-k3kc" class="label">级连升</div><div data-hf-id="hf-yxff" class="source">片中调动结果</div></div>
+      <div data-hf-id="hf-ygem" id="tag-plan" class="clip keyword red" data-start="21" data-duration="3.5">广进计划</div>
+      <div data-hf-id="hf-6zzo" id="tag-next" class="clip keyword red" data-start="24.5" data-duration="3">下一个是谁？</div>
+      <div data-hf-id="hf-ltp4" id="tag-blame" class="clip tag right" data-start="27.5" data-duration="3">背锅 / 自保 / 被优化</div>
+      <div data-hf-id="hf-dyoa" id="card-layoff" class="clip number-card" data-start="30.5" data-duration="3.5"><div data-hf-id="hf-24vy" class="number">40%</div><div data-hf-id="hf-g0u9" class="label">6000个普通员工</div><div data-hf-id="hf-25ub" class="source">“广进计划”片中信息</div></div>
+      <div data-hf-id="hf-m75x" id="tag-factory" class="clip keyword red" data-start="34" data-duration="3">老厂，也保不住？</div>
+      <div data-hf-id="hf-9q7q" id="tag-investigate" class="clip tag" data-start="37" data-duration="3">回总部，查清楚</div>
+      <div data-hf-id="hf-bqv9" id="tag-evidence" class="clip tag right" data-start="40" data-duration="3">证据，带进年会</div>
+      <div data-hf-id="hf-s4i0" id="flash-truth" class="clip flash" data-start="43" data-duration="1">等一下</div>
+      <div data-hf-id="hf-n21p" id="quote-fail" class="clip quote" data-start="44" data-duration="4">漂亮话，失效</div>
+      <div data-hf-id="hf-9gtc" id="tag-sing" class="clip keyword" data-start="48" data-duration="4">把憋屈，唱出来</div>
+      <div data-hf-id="hf-phgi" id="tag-question" class="clip tag" data-start="52" data-duration="5">问题，问到底</div>
+      <div data-hf-id="hf-1h2f" id="card-heart" class="clip big-card" data-start="55.5" data-duration="1.5"><h1 data-hf-id="hf-mixa">年会不能停</h1><p data-hf-id="hf-16mr">人心不能散</p></div>
+      <div data-hf-id="hf-5s7x" id="cta" class="clip cta" data-start="57" data-duration="3"><h1 data-hf-id="hf-x7g4">《年会不能停！》</h1><div data-hf-id="hf-o7kb" class="sub">打工人的年度嘴替</div><div data-hf-id="hf-s0aq" class="action">现在就看</div></div>
+    </div>
+  </body>
+</html>

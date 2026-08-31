@@ -1,0 +1,28 @@
+.env.local
+.env.*.local
+
+# User-provided media and generated video/audio are kept local.
+assets/
+outputs/
+videos/
+projects/**/assets/
+projects/**/generated/
+projects/**/hyperframes/assets/`r`nprojects/**/snapshots/`r`nprojects/**/.thumbnails/
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.mp3
+*.wav
+*.m4a
+*.aac
+
+# Installed and built dependencies.
+**/node_modules/
+console/frontend/dist/
+__pycache__/
+*.py[cod]
+
+# Local diagnostics and temporary files.
+.tmp*
+debug.log

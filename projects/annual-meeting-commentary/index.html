@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>《年会不能停！》深度解说</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #111315; }
+      @font-face { font-family: "Microsoft YaHei"; src: local("Microsoft YaHei"); }
+      body { color: #f1eee6; font-family: "Microsoft YaHei", Arial, sans-serif; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #111315; }
+      .film { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; z-index: 1; background: #111315; }
+      .film-wash { position: absolute; inset: 0; z-index: 5; pointer-events: none; background: rgba(10, 12, 13, .27); }
+      .film-vignette { position: absolute; inset: 0; z-index: 6; pointer-events: none; border: 1px solid rgba(241, 238, 230, .14); box-shadow: inset 0 -220px 180px rgba(10, 12, 13, .62), inset 0 80px 110px rgba(10, 12, 13, .28); }
+      .chapter-rail { position: absolute; z-index: 12; left: 82px; top: 70px; display: flex; align-items: center; gap: 22px; color: rgba(241, 238, 230, .76); font-size: 24px; letter-spacing: 2px; pointer-events: none; }
+      .chapter-rail .index { color: #b44a3c; font-weight: 800; }
+      .chapter-rail .line { width: 74px; height: 1px; background: rgba(241, 238, 230, .48); }
+      .keyline { position: absolute; z-index: 12; left: 82px; bottom: 86px; width: 520px; height: 2px; background: #b44a3c; transform-origin: left center; pointer-events: none; }
+      .keyphrase { position: absolute; z-index: 12; right: 86px; top: 74px; max-width: 430px; color: rgba(241, 238, 230, .88); font-size: 28px; line-height: 1.28; text-align: right; letter-spacing: 1px; pointer-events: none; }
+      .keyword { color: #d9897d; font-weight: 800; }
+      .chapter-card { position: absolute; inset: 0; z-index: 30; display: grid; place-items: center; background: #17191b; pointer-events: none; }
+      .chapter-card::after { content: ""; position: absolute; width: 720px; height: 1px; left: 120px; top: 244px; background: rgba(180, 74, 60, .64); }
+      .card-inner { position: relative; z-index: 1; width: 1420px; }
+      .card-index { color: #b44a3c; font-size: 25px; letter-spacing: 4px; margin-bottom: 26px; }
+      .card-title { max-width: 1160px; margin: 0; color: #f1eee6; font-family: Georgia, "Microsoft YaHei", serif; font-size: 78px; line-height: 1.18; font-weight: 500; letter-spacing: 2px; }
+      .card-note { max-width: 850px; margin: 34px 0 0; color: rgba(241, 238, 230, .58); font-size: 27px; line-height: 1.6; letter-spacing: 1px; }
+      .end-card { background: #0d0f10; }
+      .end-card .card-title { font-size: 92px; }
+      .end-card .card-note { color: #d06b5d; }
+      .film-caption { position: absolute; z-index: 15; left: 82px; right: 82px; bottom: 112px; max-width: 1120px; color: #f1eee6; font-size: 36px; line-height: 1.36; font-weight: 600; text-shadow: 0 2px 18px rgba(0,0,0,.9); pointer-events: none; }
+      .film-caption::before { content: ""; display: block; width: 7px; height: 46px; margin-bottom: 14px; background: #b44a3c; }
+      .closing-question { position: absolute; inset: 0; z-index: 32; display: grid; place-items: center; background: rgba(13, 15, 16, .92); pointer-events: none; }
+      .closing-question .question { max-width: 1220px; color: #f1eee6; font-family: Georgia, "Microsoft YaHei", serif; font-size: 70px; line-height: 1.28; text-align: center; }
+      .closing-question .small { margin-top: 32px; color: #d06b5d; font-family: "Microsoft YaHei", Arial, sans-serif; font-size: 28px; letter-spacing: 2px; text-align: center; }
+      .clip { pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="annual-meeting-commentary" data-start="0" data-duration="870" data-width="1920" data-height="1080" data-fps="60">
+      <video id="film-01" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="0" data-duration="70" data-media-start="113" data-track-index="0" muted playsinline preload="auto"></video>
+      <video id="film-02" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="75" data-duration="144.1" data-media-start="603" data-track-index="0" muted playsinline preload="auto"></video>
+      <video id="film-03" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="224.1" data-duration="114.2" data-media-start="2186" data-track-index="0" muted playsinline preload="auto"></video>
+      <video id="film-04" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="343.3" data-duration="118.3" data-media-start="174" data-track-index="0" muted playsinline preload="auto"></video>
+      <video id="film-05" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="466.6" data-duration="97.6" data-media-start="2720" data-track-index="0" muted playsinline preload="auto"></video>
+      <video id="film-06" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="569.2" data-duration="112.5" data-media-start="3537" data-track-index="0" muted playsinline preload="auto"></video>
+      <video id="film-07" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="686.7" data-duration="148.7" data-media-start="6140" data-track-index="0" muted playsinline preload="auto"></video>
+      <video id="film-08" class="film clip" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="835.3" data-duration="34.7" data-media-start="6871" data-track-index="0" muted playsinline preload="auto"></video>
+
+      <div id="wash" class="film-wash"></div>
+      <div id="vignette" class="film-vignette"></div>
+
+      <div id="rail-01" class="chapter-rail clip" data-start="0" data-duration="70" data-track-index="10"><span class="index">OPEN</span><span class="line"></span><span>最危险的不是犯错</span></div>
+      <div id="rail-02" class="chapter-rail clip" data-start="75" data-duration="144.1" data-track-index="10"><span class="index">01</span><span class="line"></span><span>一个人为什么可以被解释成任何人</span></div>
+      <div id="rail-03" class="chapter-rail clip" data-start="224.1" data-duration="114.2" data-track-index="10"><span class="index">02</span><span class="line"></span><span>升职不是因为能力</span></div>
+      <div id="rail-04" class="chapter-rail clip" data-start="343.3" data-duration="118.3" data-track-index="10"><span class="index">03</span><span class="line"></span><span>工厂与总部</span></div>
+      <div id="rail-05" class="chapter-rail clip" data-start="466.6" data-duration="97.6" data-track-index="10"><span class="index">04</span><span class="line"></span><span>语言成为权力的门禁</span></div>
+      <div id="rail-06" class="chapter-rail clip" data-start="569.2" data-duration="112.5" data-track-index="10"><span class="index">05</span><span class="line"></span><span>从工人到打工人</span></div>
+      <div id="rail-07" class="chapter-rail clip" data-start="686.7" data-duration="148.7" data-track-index="10"><span class="index">CLOSE</span><span class="line"></span><span>年会结束以后</span></div>
+      <div id="key-01" class="keyphrase clip" data-start="0" data-duration="70" data-track-index="11">事实还没有被确认，<span class="keyword">责任</span>已经开始寻找新的主人。</div>
+      <div id="key-02" class="keyphrase clip" data-start="75" data-duration="144.1" data-track-index="11">一个人失去真实的来处，就可以被解释成<span class="keyword">任何人</span>。</div>
+      <div id="key-03" class="keyphrase clip" data-start="224.1" data-duration="114.2" data-track-index="11">不是能力改变了，是别人看他的<span class="keyword">方式</span>改变了。</div>
+      <div id="key-04" class="keyphrase clip" data-start="343.3" data-duration="118.3" data-track-index="11">人被放在哪里，决定了他如何被<span class="keyword">看见</span>。</div>
+      <div id="key-05" class="keyphrase clip" data-start="466.6" data-duration="97.6" data-track-index="11">词语越来越漂亮，事情却不一定更<span class="keyword">体面</span>。</div>
+      <div id="key-06" class="keyphrase clip" data-start="569.2" data-duration="112.5" data-track-index="11">拒绝把一个具体的人轻易改写成一个<span class="keyword">数字</span>。</div>
+      <div id="key-07" class="keyphrase clip" data-start="686.7" data-duration="148.7" data-track-index="11">说清楚，本身就已经是一种<span class="keyword">反抗</span>。</div>
+      <div id="caption-01" class="film-caption clip" data-start="0" data-duration="70" data-track-index="12">在很多公司，最危险的一句话，可能不是“你被裁了”。</div>
+      <div id="caption-02" class="film-caption clip" data-start="75" data-duration="144.1" data-track-index="12">猜测一旦开始，事实就退到了幕后。</div>
+      <div id="caption-03" class="film-caption clip" data-start="224.1" data-duration="114.2" data-track-index="12">升职不是因为能力，而是因为误会。</div>
+      <div id="caption-04" class="film-caption clip" data-start="343.3" data-duration="118.3" data-track-index="12">真正的美学分析，是找到画面如何安排一个人。</div>
+      <div id="caption-05" class="film-caption clip" data-start="466.6" data-duration="97.6" data-track-index="12">语言有时不是把现实说清楚，而是让现实更容易被接受。</div>
+      <div id="caption-06" class="film-caption clip" data-start="569.2" data-duration="112.5" data-track-index="12">理想主义，是拒绝把一个具体的人轻易改写成数字。</div>
+      <div id="caption-07" class="film-caption clip" data-start="686.7" data-duration="148.7" data-track-index="12">喜剧能抚慰人，却不能替人完成生活。</div>
+
+      <div id="card-01" class="chapter-card clip" data-start="70" data-duration="5" data-track-index="20"><div class="card-inner"><div class="card-index">01 / STRUCTURE</div><h1 class="card-title">一个人为什么可以被解释成任何人</h1><p class="card-note">当组织不愿承认错误，误会就会开始替事实工作。</p></div></div>
+      <div id="card-02" class="chapter-card clip" data-start="219.1" data-duration="5" data-track-index="20"><div class="card-inner"><div class="card-index">02 / POSITION</div><h1 class="card-title">升职不是因为能力</h1><p class="card-note">同一个人没有改变，世界却改变了对他的解释。</p></div></div>
+      <div id="card-03" class="chapter-card clip" data-start="338.3" data-duration="5" data-track-index="20"><div class="card-inner"><div class="card-index">03 / SPACE</div><h1 class="card-title">工厂与总部，是两种看待人的方式</h1><p class="card-note">画面里的边界，常常比台词更早说出权力。</p></div></div>
+      <div id="card-04" class="chapter-card clip" data-start="461.6" data-duration="5" data-track-index="20"><div class="card-inner"><div class="card-index">04 / LANGUAGE</div><h1 class="card-title">当所有人都开始说不像人话的话</h1><p class="card-note">词语的门打开了，人的重量却可能被关在门外。</p></div></div>
+      <div id="card-05" class="chapter-card clip" data-start="564.2" data-duration="5" data-track-index="20"><div class="card-inner"><div class="card-index">05 / TIME</div><h1 class="card-title">从工人到“打工人”</h1><p class="card-note">只差一个字，却像两种不同的时代回声。</p></div></div>
+      <div id="card-06" class="chapter-card clip end-card" data-start="681.7" data-duration="5" data-track-index="20"><div class="card-inner"><div class="card-index">CLOSE / AFTER THE PARTY</div><h1 class="card-title">年会结束以后，工作还会继续</h1><p class="card-note">真正需要保留下来的，不是漂亮的结局。</p></div></div>
+      <div id="closing" class="closing-question clip" data-start="835.3" data-duration="34.7" data-track-index="30"><div><div class="question">你在职场里听过最荒唐的一句“漂亮话”是什么？</div><div class="small">《年会不能停！》 / 错调荒诞，照见职场</div></div></div>
+
+      <audio id="voice-01" src="generated/voiceover/01-开场-最危险的不是犯错.mp3" data-start="0" data-duration="69.986" data-volume="1" data-track-index="40"></audio>
+      <audio id="voice-02" src="generated/voiceover/02-第一章-一个人为什么可以被解释成任何人.mp3" data-start="75" data-duration="144.062" data-volume="1" data-track-index="40"></audio>
+      <audio id="voice-03" src="generated/voiceover/03-第二章-升职不是因为能力-而是因为误会.mp3" data-start="224.1" data-duration="114.198" data-volume="1" data-track-index="40"></audio>
+      <audio id="voice-04" src="generated/voiceover/04-第三章-工厂与总部-是两种看待人的方式.mp3" data-start="343.3" data-duration="118.261" data-volume="1" data-track-index="40"></audio>
+      <audio id="voice-05" src="generated/voiceover/05-第四章-当所有人都开始说不像人话的话.mp3" data-start="466.6" data-duration="97.649" data-volume="1" data-track-index="40"></audio>
+      <audio id="voice-06" src="generated/voiceover/06-第五章-从工人到-打工人-一词之变.mp3" data-start="569.2" data-duration="112.514" data-volume="1" data-track-index="40"></audio>
+      <audio id="voice-07" src="generated/voiceover/07-收束-年会结束以后-工作还会继续.mp3" data-start="686.7" data-duration="148.668" data-volume="1" data-track-index="40"></audio>
+
+      <audio id="bgm-01" src="generated/music/01-secret-garden.mp3" data-start="0" data-duration="153" data-volume="0.12" data-track-index="50"></audio>
+      <audio id="bgm-02" src="generated/music/01-secret-garden.mp3" data-start="153" data-duration="66.1" data-volume="0.12" data-track-index="50"></audio>
+      <audio id="bgm-03" src="generated/music/02-relax-beat.mp3" data-start="219.1" data-duration="108" data-volume="0.11" data-track-index="50"></audio>
+      <audio id="bgm-04" src="generated/music/02-relax-beat.mp3" data-start="327.1" data-duration="11.2" data-volume="0.11" data-track-index="50"></audio>
+      <audio id="bgm-05" src="generated/music/03-classical-vibes-5.mp3" data-start="338.3" data-duration="123" data-volume="0.11" data-track-index="50"></audio>
+      <audio id="bgm-06" src="generated/music/03-classical-vibes-5.mp3" data-start="461.3" data-duration="5.3" data-volume="0.11" data-track-index="50"></audio>
+      <audio id="bgm-07" src="generated/music/02-relax-beat.mp3" data-start="466.6" data-duration="97.6" data-volume="0.1" data-track-index="50"></audio>
+      <audio id="bgm-08" src="generated/music/03-classical-vibes-5.mp3" data-start="564.2" data-duration="123" data-volume="0.1" data-track-index="50"></audio>
+      <audio id="bgm-09" src="generated/music/03-classical-vibes-5.mp3" data-start="687.2" data-duration="123" data-volume="0.09" data-track-index="50"></audio>
+      <audio id="bgm-10" src="generated/music/03-classical-vibes-5.mp3" data-start="810.2" data-duration="59.8" data-volume="0.08" data-track-index="50"></audio>
+
+      <audio id="source-opening" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="0" data-duration="2.5" data-media-start="307" data-volume="0.18" data-track-index="60"></audio>
+      <audio id="source-stage" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="730" data-duration="4" data-media-start="6140" data-volume="0.4" data-track-index="60"></audio>
+      <audio id="source-rap" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="748" data-duration="4" data-media-start="6241" data-volume="0.42" data-track-index="60"></audio>
+      <audio id="source-reveal" src="assets/annual-meeting/media/年会不能停！.mp4" data-start="752" data-duration="5" data-media-start="6378" data-volume="0.44" data-track-index="60"></audio>
+    </div>
+    <script>
+      const timeline = gsap.timeline({ paused: true });
+      ["card-01", "card-02", "card-03", "card-04", "card-05", "card-06"].forEach((id) => {
+        const start = Number(document.getElementById(id).dataset.start);
+        timeline.fromTo(`#${id} .card-index`, { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.45 }, start);
+        timeline.fromTo(`#${id} .card-title`, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.8 }, start + 0.15);
+        timeline.fromTo(`#${id} .card-note`, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6 }, start + 0.45);
+      });
+      ["key-01", "key-02", "key-03", "key-04", "key-05", "key-06", "key-07"].forEach((id) => {
+        const element = document.getElementById(id);
+        timeline.fromTo(element, { opacity: 0, x: 28 }, { opacity: 1, x: 0, duration: 0.55 }, Number(element.dataset.start) + 0.5);
+      });
+      timeline.fromTo("#closing .question", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1 }, 836);
+      timeline.fromTo("#closing .small", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 837);
+      timeline.to("#root", { opacity: 0, duration: 1.2 }, 868.8);
+      window.__timelines["annual-meeting-commentary"] = timeline;
+    </script>
+  </body>
+</html>

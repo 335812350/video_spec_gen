@@ -1,0 +1,4 @@
+调查结论：截图中的每个 HyperFrames 条目出现两次，主要来自两个本地全局 skill 目录：C:\Users\chenyinghong\.codex\skills\hyperframes-* 与 C:\Users\chenyinghong\.agents\skills\hyperframes-*。两套目录下 HyperFrames 8 个 SKILL.md 文件字节数/mtime/sha256 全部一致（例如 hyperframes 15666 bytes, hash A6E5...D1E），是同一份 heygen-com/hyperframes 内容的重复副本；.agents/.skill-lock.json 记录 source heygen-com/hyperframes、pluginName core-skills、安装时间 2026-08-25T04:07:08Z。另有已启用的插件 C:\Users\chenyinghong\.codex\plugins\cache\openai-api-curated\hyperframes\33bd9529（plugin.json version 0.1.2, displayName HyperFrames by HeyGen），它另外提供 5 个带插件命名空间的技能（hyperframes、hyperframes-cli、hyperframes-registry、gsap、website-to-hyperframes），所以有第三层来源，但截图中成对重复对应前两个目录。
+
+清理建议：不要直接删 .agents 或 .codex 整棵目录；先确认 Codex 当前版本需要哪一个全局目录。保留一套 heygen-com/hyperframes 技能即可，另一套可移走/卸载后重启 Codex；插件 hyperframes@openai-api-curated 与手工 skills 安装是不同版本/内容，若保留插件，可考虑卸载手工 core-skills 副本，但会失去 animation/audio/core/creative/keyframes/media-use 等插件未提供的技能。清理前备份并确认插件加载路径。
+

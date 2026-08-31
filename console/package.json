@@ -1,0 +1,19 @@
+{
+  "name": "video-project-console",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "node --watch server/app.js",
+    "build": "npm --prefix frontend run build",
+    "electron": "electron electron/main.js",
+    "test": "node --test server/**/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "electron": "^42.6.0"
+  }
+}
