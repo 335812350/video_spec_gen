@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "annual-meeting-high-energy-rap-full",
+  "project_slug": "annual-meeting-high-energy-rap-full",
+  "source_film_slug": "annual-meeting",
+  "workflow_id": "high-energy-clip",
+  "workflow_version": "2",
+  "video_type": "high-energy-clip",
+  "production_mode": "asset-led",
+  "title": "年会不能停！·三人年会 Rap 完整片段",
+  "variant_id": null,
+  "spec_path": "video-spec.md",
+  "edit_plan_path": "edit-plan.md",
+  "composition_path": "hyperframes/",
+  "latest_output": null
+}

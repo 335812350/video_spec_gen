@@ -1,11 +1,11 @@
 ---
 name: components-catalog
-description: 视频内容类型词汇表 · 69 个标准内容类型。
+description: 视频内容类型词汇表 · 71 个标准内容类型。
 ---
 
 # 内容类型词汇表 · Components Catalog
 
-69 个标准内容类型，拆分镜时每镜锚定一个组件 ID。本目录只描述「用途 / 何时用 / 何时不用 / 内容期待」，不含视觉实现细节。
+71 个标准内容类型，拆分镜时每镜锚定一个组件 ID。本目录只描述「用途 / 何时用 / 何时不用 / 内容期待」，不含视觉实现细节。
 
 [使用方式]
     - 选组件：先看 [何时用] / [何时不用] 划范围，再看 [用途] 确认
@@ -13,8 +13,8 @@ description: 视频内容类型词汇表 · 69 个标准内容类型。
     - 兜底：找不到合适组件 → `broll-abstract.placeholder` + 在「开放问题」登记
     - 命名规则：`namespace.component-id`（如 `aroll.subtitle-highlight`）
 
-11 个 namespace（不允许自创）：
-    aroll · broll-hero · broll-charts · broll-abstract · broll-flows ·
+12 个 namespace（不允许自创）：
+    aroll · broll-hero · broll-footage · broll-charts · broll-abstract · broll-flows ·
     broll-structure · broll-structures2 · broll-thinking · broll-ui ·
     icons · illustrations
 
@@ -47,6 +47,20 @@ description: 视频内容类型词汇表 · 69 个标准内容类型。
     何时用：章节封面 · 整支视频核心论点的"标题镜头" · 段落之间需要节奏停顿 / 视觉清场。
     何时不用：普通段落标题（→ concept-card）· 同段落已用过另一张 hero · 信息 ≥ 2 行论点。
     内容期待：一行核心标题（≤ 8 中文字 / ≤ 5 英文词）· 章节编号 · 是否某字斜体 / 反色 · 关键短语副标（可选）。
+
+[B-roll · 原片素材]
+
+[broll-footage.source-cut] 原片窗口 · Source Cut · FULL-FRAME SOURCE WINDOW
+    用途：把影片源文件中的一个明确时间窗口作为全屏素材镜头播放。
+    何时用：单个动作、对白、反转或情绪爆发窗口；需要保留原片画面和可选原声时。
+    何时不用：需要连续拼接多个窗口（→ impact-montage）；不是用户确认过的影片源素材。
+    内容期待：影片源路径 · source_in / source_out · timeline_start / timeline_end · playback_rate · 原声策略 · 9:16 主体安全区。
+
+[broll-footage.impact-montage] 冲击混剪 · Impact Montage · BEAT-LED SOURCE MONTAGE
+    用途：把多个已确认的影片源窗口按成片时间轴连续拼接，形成引子、升级、爆点、回收的能量曲线。
+    何时用：冲突升级、反转串联或需要节拍连续击打的素材段落。
+    何时不用：单一长镜头足以完成表达（→ source-cut）；尚未确认片段顺序或是否允许重排。
+    内容期待：有序 source_segments[] · 每段源/成片时间码 · 能量等级和叙事作用 · 切换点 · 原声/BGM/静音策略 · 画幅安全区。
 
 [broll-hero.big-number] 大数字 · Big Stat · STATISTIC HERO
     用途：用一个超大数字（百分比 / 倍数 / 量级）撑满画面，配一句精炼解释。
@@ -487,4 +501,4 @@ description: 视频内容类型词汇表 · 69 个标准内容类型。
 └── 缺素材兜底                        → broll-abstract.placeholder
 ```
 
-合计 69 个组件 · 11 个 namespace。
+合计 71 个组件 · 12 个 namespace。

@@ -5,9 +5,10 @@ description: video-spec.md 的骨架模板。复制全文、把每个 [占位符
 
 # Video Spec 模板
 
-复制下面代码块整段，存成目标影片工作目录的
-`projects/<film-slug>/video-spec.md`。每个 `[方括号]` 是一个占位符——把方括号连同里面的说明文字，整个替换成你的真实内容。
+复制下面代码块整段，存成目标项目工作目录的
+`projects/<project-slug>/video-spec.md`。每个 `[方括号]` 是一个占位符——把方括号连同里面的说明文字，整个替换成你的真实内容。
 
+项目关联：project.json 的 source_film_slug 指向共享源影片 assets/<film-slug>/；本 spec 只描述当前 project-slug 的交付。
 填写时要查的文档：
 
 - 字段约束 / 规格一致性校验 / 交付前自检清单 → `references/spec-rules.md`
@@ -22,6 +23,12 @@ description: video-spec.md 的骨架模板。复制全文、把每个 [占位符
 
 ## 1. 视频基本盘
 
+- `workflow_id`：[调度层选择的主生产工作流 ID，例如 generic-video / film-material]
+- `workflow_version`：[工作流版本，例如 1]
+- `project_slug`：[当前独立视频交付项目目录名]
+- `source_film_slug`：[共享源影片素材目录名；没有影片素材时写无]
+- `video_type` / 视频类型：[例如 explainer / product-demo / commentary]
+- `production_mode` / 生产方式：[asset-led / narrative-led / hybrid]
 - 标题：[视频标题]
 - 目的：[这条视频要达成什么——让谁记住什么、看完去做什么]
 - 受众：[目标观众是谁——职业、痛点或关注点、在什么场景观看]
@@ -56,7 +63,7 @@ description: video-spec.md 的骨架模板。复制全文、把每个 [占位符
 
 ## 4. 视觉规范
 
-- 视觉主题：[预设名（如 Swiss Pulse），或自定义主题写 "design.md（目标影片工作目录）"]
+- 视觉主题：[预设名（如 Swiss Pulse），或自定义主题写 "design.md（目标项目工作目录）"]
 - accent 色：[强调色，不改写默认，改就给具体色值]
 - 装饰密度：[画面装饰偏多还是偏少]
 - 组件取舍：[有没有特别想用、或绝对不要用的组件；没有就写无]
@@ -66,7 +73,7 @@ description: video-spec.md 的骨架模板。复制全文、把每个 [占位符
 
 ### 已有素材
 
-[逐项列出手头已有的素材——旁白脚本、视频片段、真人出镜、图片、数据、Logo、字体、3D 模型等，每项给出具体文件路径]
+[逐项列出手头已有的素材——旁白脚本、视频片段、真人出镜、图片、数据、Logo、字体、3D 模型等，每项给出具体文件路径；如使用源视频，注明源文件和时间映射记录]
 
 ### 待生成素材
 
@@ -83,7 +90,7 @@ description: video-spec.md 的骨架模板。复制全文、把每个 [占位符
 
 ### Scene 01 · [起始秒]–[结束秒] · [这一镜在叙事里的角色]
 
-- 类型：[主线讲解镜、辅助镜、还是纯过场转场]
+- 类型：[主线讲解镜、辅助镜、纯素材镜、还是纯过场转场]
 - 组件：[这一镜用哪个组件，填 components-catalog.md 里的真实组件 ID]
 - 旁白文案：[这一镜的完整旁白原文；没有旁白就写无]
 - 屏显文案：[屏幕上显示的文字，可以和旁白不一样；没有就写无]
@@ -94,6 +101,8 @@ description: video-spec.md 的骨架模板。复制全文、把每个 [占位符
 - 音效描述：[有没有音效；有就写什么音效、什么时间点、音量多大；没有写无]
 - 转场进入：[这一镜怎么切入]
 - 转场离开：[这一镜怎么切出]
+- 源时间映射：[使用原始视频时填写：素材路径、source_in、source_out、源区间时长、timeline_start、timeline_end、playback_rate；非原始视频写无]
+- 声音策略：[原片对白 / 环境声 / BGM / 静音，以及与画面是否一一对齐]
 - 素材依赖：[这一镜用到哪些具体素材]
 
 ### Scene 02 · ……

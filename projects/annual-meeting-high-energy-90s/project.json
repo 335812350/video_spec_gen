@@ -1,0 +1,16 @@
+{
+    "schema_version":  1,
+    "id":  "annual-meeting-high-energy-90s",
+    "project_slug":  "annual-meeting-high-energy-90s",
+    "source_film_slug":  "annual-meeting",
+    "workflow_id":  "high-energy-clip",
+    "workflow_version":  "1",
+    "video_type":  "high-energy-clip",
+    "production_mode":  "asset-led",
+    "title":  "年会不能停！·年会真相高能片段",
+    "variant_id":  null,
+    "spec_path":  "video-spec.md",
+    "edit_plan_path":  "edit-plan.md",
+    "composition_path":  "hyperframes/",
+    "latest_output":  null
+}

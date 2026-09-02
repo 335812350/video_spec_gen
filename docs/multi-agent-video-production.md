@@ -1,8 +1,12 @@
-# 多智能体批量视频生产方案
+# 多智能体批量视频生产执行模型
 
 > 状态：架构建议，待实现
 >
 > 适用范围：批量生产多个视频，以及同一内容的多个文案、视觉和节奏变体。
+
+> 架构定位：本文是《Agent 驱动的自主视频生产平台总设计》的“批量生产与并行执行扩展”。它描述可选的多智能体编排、候选变体、并行 Worker 和局部重试机制，不重新定义平台的默认调度层、主生产工作流或统一 `video-spec` 契约。
+>
+> 执行前提：批量任务必须先经过调度层 Skill，选择一条主生产工作流；本方案只在该工作流内部编排批次和候选。`style_id` 表示同一主生产工作流内的表达变体，不表示多个顶层生产工作流。
 
 ## 1. 核心判断
 
@@ -10,11 +14,24 @@
 
 推荐的基本原则是：
 
-1. 父智能体负责理解用户意图、锁定约束、分派任务、选择候选和最终裁决。
+1. 调度层负责理解用户意图并选择主生产工作流；工作流父智能体负责在工作流已确定后锁定批次约束、分派任务、选择候选和最终裁决。
 2. 子智能体只处理边界清晰的提案、审查或执行任务。
 3. 最终的 `video-spec.md`、HyperFrames 组装结果和交付结论只能由父智能体或受控组装器写入。
 4. 确定性问题交给程序检查，不用 LLM 代替 `ffprobe`、Schema 校验或 HyperFrames `lint/check`。
 5. 每个子任务必须有明确输入、输出格式、文件归属、完成条件和失败处理方式。
+
+批量生产的运行链路应保持为：
+
+```text
+用户目标 / 批次配置
+  -> 调度层 Skill 识别意图与约束
+  -> 选择一条主生产工作流
+  -> 批次 Director 在该工作流内生成候选和并行任务
+  -> 受控组装 video-spec
+  -> 审核、机器门禁、渲染和人工审片
+```
+
+批量编排不能绕过主生产工作流的类型规则、统一 `video-spec` 契约或平台级质量边界。
 
 多智能体的价值来自四件事：
 
@@ -27,8 +44,8 @@
 
 当前仓库已经有部分场景级子智能体设计，但还没有完整的批量编排层：
 
-- [`console/server/codexRunner.js`](../console/server/codexRunner.js) 每次运行只启动一个 `codex exec --json` 进程。
-- 控制台的 run 记录、进程 ID 和项目锁以单一父运行为中心，没有子任务 ID、子任务状态或并发合并协议。
+- **历史基线 / 后续实现参考**：[`console/server/codexRunner.js`](../console/server/codexRunner.js) 曾以每次运行只启动一个 `codex exec --json` 进程为基础。当前项目暂不把 `console/` 作为主架构，后续如恢复控制台实现，应重新对照总设计和本方案的批次运行模型。
+- **历史基线 / 后续实现参考**：控制台的 run 记录、进程 ID 和项目锁曾以单一父运行为中心，没有子任务 ID、子任务状态或并发合并协议。当前项目不把 `console/` 视为主架构。
 - HyperFrames 技能已经定义了 frame worker、DISPATCH、WAIT、重派和无委托时的串行回退。
 - `video-spec-builder-personal` 强调用户需求确认、事实分层和 spec 一致性，但没有独立的文案 worker 或 spec QA worker。
 - 项目级锁意味着多个 worker 不能直接同时修改同一份权威 `video-spec.md`。
@@ -37,15 +54,16 @@
 
 ## 2.5 当前主要链路
 
-结论：`video-spec-builder-personal` 是“上游规格编排” skill，负责把想法整理成逐镜头的 `video-spec.md`；HyperFrames 是下游渲染器。README 也明确描述为两个 skill 接力。[README.zh.md:35](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/README.zh.md:35)
+结论：`video-spec-builder-personal` 是第二层的一条影片素材驱动生产工作流，负责把想法整理成逐镜头的 `video-spec.md`；HyperFrames 是下游执行与渲染层。平台调度层应先选择该工作流或其他已注册工作流，再进入本方案的批量编排。README 也明确描述为两个 skill 接力。[README.zh.md:35](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/README.zh.md:35)
 
 主要链路：
 
 1. **锁定影片与工作模式**  
-   根据片名、`film-slug` 或路径确定目标，只读取对应的 `assets/<slug>/` 和 `projects/<slug>/`。[SKILL.md:28](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:28)
+   根据片名、`film-slug`、`project-slug` 或路径确定目标：共享素材读取对应的 `assets/<film-slug>/`，项目文件读取对应的 `projects/<project-slug>/`。[SKILL.md:28](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:28)
+   同一影片但视频类型、平台、时长或剪辑目标不同，应创建新的顶层 `project-slug`；`variant_id` 只用于批次候选和实验追踪。
 
 2. **新影片先做资料补全**  
-   新片必须先本地盘点，再做可追溯的联网检索；把来源状态和影片资料写入 `assets/<slug>/references/`，至少生成 `film-metadata.json`、`film-profile.md`、`story-context.md`。[SKILL.md:6](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:6)
+   新片必须先本地盘点，再做可追溯的联网检索；把来源状态和影片资料写入 `assets/<film-slug>/references/`，至少生成 `film-metadata.json`、`film-profile.md`、`story-context.md`。[SKILL.md:6](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:6)
 
 3. **分支处理**
    - 没有现有 spec：走 **0-1 模式**
@@ -59,17 +77,16 @@
 
 6. **生成或更新 spec**  
    按模板和 `spec-rules` 写入或更新  
-   `projects/<film-slug>/video-spec.md`，时长精确到 0.1 秒，缺失内容标 `[待补充]`。[workflow-0-1.md:220](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/references/workflow-0-1.md:220)
+   `projects/<project-slug>/video-spec.md`，时长精确到 0.1 秒，缺失内容标 `[待补充]`。[workflow-0-1.md:220](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/references/workflow-0-1.md:220)
 
 7. **交给 HyperFrames**  
-   spec 完成后只提示用户是否执行 `/hyperframes`；新渲染版本写入 `outputs/<slug>/render-vNNN.mp4`，不会自动判断最终版。[SKILL.md:339](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:339)
+   spec 完成后先通过确定性检查和独立只读审核，再提示用户是否执行 `/hyperframes`；新渲染版本写入 `outputs/<project-slug>/render-vNNN.mp4`，不会自动判断最终版。[SKILL.md:339](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:339)
 
 关于“是否有启动 agent”：
 
 - **Skill 本身没有启动 agent。** 文档中没有 `spawn_agent`、`subagent`、启动脚本或 agent 编排配置。
 - 它运行在当前的 Codex/Claude 等宿主 agent 中；`project-layout.md` 中“agent 可以写入 reference”只是权限说明，不是创建子 agent。[project-layout.md:19](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/references/project-layout.md:19)
 - 联网搜索、HyperFrames 渲染是工具/下游流程，不等于启动子 agent。
-- 本次回答过程中我额外启动了一个只读审阅 agent 来交叉核对文档；这是本次检查的临时行为，不属于该 skill 的内置链路。
 
 ## 3. 推荐架构
 
@@ -77,8 +94,16 @@
 用户目标 / 批次配置
           |
           v
-父智能体（Director / Orchestrator）
-  锁定事实、受众、平台、时长、批次矩阵和验收标准
+调度层 Skill
+  识别意图、上下文与约束，选择一条主生产工作流
+          |
+          v
+已选主生产工作流
+  提供类型规则、输入边界、video-spec 映射和验收标准
+          |
+          v
+批次 Director（父智能体 / Orchestrator）
+  在该工作流内锁定事实、受众、平台、时长、批次矩阵和验收标准
           |
           +--> 共享素材与事实分析 Worker（一次，结果缓存）
           |
@@ -106,7 +131,7 @@
 
 ### 3.1 父智能体
 
-父智能体是唯一的生产负责人，不负责亲自完成所有细节。它负责：
+父智能体（批次 Director）是在调度层已经选定主生产工作流之后的批次负责人，不负责亲自完成所有细节。它负责：
 
 - 解析用户目标和批次要求。
 - 确认受众、平台、时长、核心信息、事实边界和禁用项。
@@ -114,8 +139,9 @@
 - 决定需要哪些风格、哪些候选进入渲染，以及哪些任务可以并行。
 - 合并候选结果并解决冲突。
 - 决定是否通过 QA、是否渲染和是否交付。
+- 在同一主生产工作流内管理 `style_id` / `variant_id`，不得把候选变体偷偷升级为未经路由的顶层工作流。
 
-父智能体不能把未确认的用户偏好偷偷补进 spec。无法确认的创意假设应标为待确认，而不是让 worker 自行决定。
+父智能体不能把未确认的用户偏好偷偷补进 spec，也不能绕过统一契约、确定性机器门禁或渲染后检查。无法确认的创意假设应标为待确认，而不是让 worker 自行决定；非阻断性创意风险可以在记录后交由用户或既定策略裁决。
 
 ### 3.2 共享素材与事实分析 Worker
 
@@ -155,7 +181,7 @@
 
 ### 3.4 风格配置
 
-风格不应依赖“某个 agent 的人格”。应该使用可版本化的风格包：
+风格不应依赖“某个 agent 的人格”。在本方案中，`style_id` 是所选主生产工作流内的表达变体标识，不是新的顶层工作流。应该使用可版本化的风格包：
 
 ```json
 {
@@ -188,14 +214,14 @@
 Spec 组装器是唯一的权威写入者。它把已选择的文案、用户已确认的约束、事实引用、镜头结构和设计决策写入：
 
 ```text
-projects/<film-slug>/video-spec.md
+projects/<project-slug>/video-spec.md
 ```
 
-候选文件和评审报告应保留在对应的批次或 run 目录中，便于追踪“哪个变体生成了哪个 spec”。
+候选文件和评审报告应保留在对应的批次或 run 目录中，便于追踪“哪个变体生成了哪个 spec”。被选中且需要独立生命周期的交付物，创建新的顶层 `project-slug`，不使用 `projects/<film-slug>/<variant-id>/` 表示独立项目。
 
 ### 3.7 Spec QA Worker
 
-Spec QA worker 只读检查，不直接修复文件。输出结构化报告，例如：
+Spec QA worker 与生成该 spec 的 Worker 在权限和任务上下文上隔离，只读检查，不直接修复文件。输出结构化报告，例如：
 
 ```json
 {
@@ -220,11 +246,11 @@ Spec QA worker 只读检查，不直接修复文件。输出结构化报告，�
 - 是否违反 `spec-rules`、节奏规则或项目目录边界。
 - 核心 takeaway 是否被变体内容稀释。
 
-只有 QA 通过，或父智能体明确接受已记录的风险，任务才可进入组装和渲染。
+只有 QA 通过，且确定性机器门禁通过，任务才可进入组装和渲染。父智能体只能裁决已记录的非阻断性创意问题，不能接受 Schema、路径、时间码、HyperFrames `lint/check` 或其他硬性门禁失败。
 
 ### 3.8 Frame Worker 与视觉 QA
 
-已经确认的多场景 spec 可以交给现有 HyperFrames frame worker。每个 worker 只拥有自己的场景文件和 motion sidecar，不能改邻居场景或根级组装。
+已经通过统一契约、确定性检查和只读审核的多场景 spec 才可以交给现有 HyperFrames frame worker。每个 worker 只拥有自己的场景文件和 motion sidecar，不能改邻居场景或根级组装；视频类型和表达变体由上游工作流确定，不由 frame worker 临时改变。
 
 渲染后再使用视觉 QA worker 检查截图或 contact sheet：
 
@@ -241,6 +267,7 @@ Spec QA worker 只读检查，不直接修复文件。输出结构化报告，�
 
 批次配置至少应包含：
 
+- 已选定的主生产工作流 ID 及版本。
 - 一个共享事实包和素材清单。
 - 一个基础用户目标。
 - 风格列表和每种风格的变体数量。
@@ -263,7 +290,7 @@ batch-001
 
 ### 阶段 C：并行生成与评审
 
-并行运行风格候选，再并行运行评审。评审完成后由父智能体选择 Top-K，而不是默认所有候选都渲染。
+在同一主生产工作流的边界内并行运行表达变体候选，再并行运行评审。评审完成后由父智能体选择 Top-K，而不是默认所有候选都渲染。若任务需要独特输入、工具链、生命周期或产物质量模型，应由调度层路由到独立重型工作流，而不是在本批次中隐式拼接多个顶层工作流。
 
 ### 阶段 D：组装、检查和 QA
 
@@ -282,6 +309,8 @@ batch-001
 ```text
 输入快照 -> 风格包 -> 文案候选 -> spec -> composition -> QA -> render-vNNN.mp4
 ```
+
+批次 Director 可以根据评审结果选择候选，但不能用“接受风险”绕过统一 `video-spec` 契约、确定性机器门禁或渲染后产物检查。机器检查处理可判定的技术问题；用户仍保留对叙事、情绪、节奏、类型归属和最终可发布性的人工审片判断。除非用户明确授权自动交付，否则候选选择和交付仍应经过人工确认。
 
 ## 5. 任务契约与并发边界
 
@@ -313,6 +342,13 @@ batch-001
 当前项目级锁不支持多个 worker 直接并发写同一项目文件，因此第一版应采用“并行候选/报告，单点合并”的方式。
 
 ## 6. 何时使用、何时不使用
+
+### 6.1 视频类型、表达变体与重型工作流
+
+- **视频类型**回答“成片应该如何叙事和表达”，由调度层选择对应的生产工作流。
+- **表达变体**是同一条生产工作流内部的实验维度，例如不同文案语气、节奏或视觉方向；`style_id` / `variant_id` 不得绕过调度层成为顶层工作流。
+- **独立重型工作流**适用于输入、工具链、生命周期或产物质量模型显著不同的任务，例如音乐视频、互动视频等。
+- **通用编排工作流**是用户未明确视频类型或现有类型模块不适用时的兜底路径。
 
 适合拆子智能体：
 
@@ -350,7 +386,7 @@ batch-001
 
 ### MVP 2：批次运行与局部重试
 
-为控制台增加：
+为未来运行控制台（若恢复该实现）增加：
 
 - batch、task、parent-child 运行记录。
 - 子任务状态、artifact、日志和错误。

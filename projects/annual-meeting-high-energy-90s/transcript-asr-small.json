@@ -1,0 +1,1145 @@
+{
+  "engine": "faster-whisper",
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "language": "zh",
+  "source": "assets/annual-meeting/media/年会不能停！.mp4",
+  "cues": [
+    {
+      "segment_id": "gala-performance-hook",
+      "source_start": 6015.0,
+      "source_end": 6017.62,
+      "timeline_start": 0.0,
+      "timeline_end": 2.62,
+      "text": "原来不是梦",
+      "words": [
+        {
+          "start": 0.0,
+          "end": 0.0,
+          "text": "原"
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "text": "来"
+        },
+        {
+          "start": 0.2,
+          "end": 0.78,
+          "text": "不是"
+        },
+        {
+          "start": 0.78,
+          "end": 2.62,
+          "text": "梦"
+        }
+      ]
+    },
+    {
+      "segment_id": "gala-performance-hook",
+      "source_start": 6018.58,
+      "source_end": 6020.88,
+      "timeline_start": 3.58,
+      "timeline_end": 5.88,
+      "text": "我认真地过每一分",
+      "words": [
+        {
+          "start": 3.58,
+          "end": 3.88,
+          "text": "我"
+        },
+        {
+          "start": 3.88,
+          "end": 4.16,
+          "text": "认"
+        },
+        {
+          "start": 4.16,
+          "end": 4.44,
+          "text": "真"
+        },
+        {
+          "start": 4.44,
+          "end": 4.72,
+          "text": "地"
+        },
+        {
+          "start": 4.72,
+          "end": 5.02,
+          "text": "过"
+        },
+        {
+          "start": 5.02,
+          "end": 5.34,
+          "text": "每"
+        },
+        {
+          "start": 5.34,
+          "end": 5.7,
+          "text": "一"
+        },
+        {
+          "start": 5.7,
+          "end": 5.88,
+          "text": "分"
+        }
+      ]
+    },
+    {
+      "segment_id": "gala-rap-opening",
+      "source_start": 6056.0,
+      "source_end": 6058.12,
+      "timeline_start": 6.0,
+      "timeline_end": 8.12,
+      "text": "跟著希望再多",
+      "words": [
+        {
+          "start": 6.0,
+          "end": 6.22,
+          "text": "跟"
+        },
+        {
+          "start": 6.22,
+          "end": 6.48,
+          "text": "著"
+        },
+        {
+          "start": 6.48,
+          "end": 7.2,
+          "text": "希望"
+        },
+        {
+          "start": 7.2,
+          "end": 7.72,
+          "text": "再"
+        },
+        {
+          "start": 7.72,
+          "end": 8.12,
+          "text": "多"
+        }
+      ]
+    },
+    {
+      "segment_id": "corruption-video",
+      "source_start": 6150.38,
+      "source_end": 6152.44,
+      "timeline_start": 28.38,
+      "timeline_end": 30.44,
+      "text": "我是标准建厂的公交科科长",
+      "words": [
+        {
+          "start": 28.38,
+          "end": 28.74,
+          "text": "我是"
+        },
+        {
+          "start": 28.74,
+          "end": 29.1,
+          "text": "标"
+        },
+        {
+          "start": 29.1,
+          "end": 29.26,
+          "text": "准"
+        },
+        {
+          "start": 29.26,
+          "end": 29.4,
+          "text": "建"
+        },
+        {
+          "start": 29.4,
+          "end": 29.6,
+          "text": "厂"
+        },
+        {
+          "start": 29.6,
+          "end": 29.72,
+          "text": "的"
+        },
+        {
+          "start": 29.72,
+          "end": 29.84,
+          "text": "公"
+        },
+        {
+          "start": 29.84,
+          "end": 29.98,
+          "text": "交"
+        },
+        {
+          "start": 29.98,
+          "end": 30.1,
+          "text": "科"
+        },
+        {
+          "start": 30.1,
+          "end": 30.26,
+          "text": "科"
+        },
+        {
+          "start": 30.26,
+          "end": 30.44,
+          "text": "长"
+        }
+      ]
+    },
+    {
+      "segment_id": "corruption-video",
+      "source_start": 6152.44,
+      "source_end": 6153.4,
+      "timeline_start": 30.44,
+      "timeline_end": 31.4,
+      "text": "公众和公众",
+      "words": [
+        {
+          "start": 30.44,
+          "end": 30.68,
+          "text": "公"
+        },
+        {
+          "start": 30.68,
+          "end": 30.88,
+          "text": "众"
+        },
+        {
+          "start": 30.88,
+          "end": 31.0,
+          "text": "和"
+        },
+        {
+          "start": 31.0,
+          "end": 31.24,
+          "text": "公"
+        },
+        {
+          "start": 31.24,
+          "end": 31.4,
+          "text": "众"
+        }
+      ]
+    },
+    {
+      "segment_id": "corruption-video",
+      "source_start": 6153.84,
+      "source_end": 6155.96,
+      "timeline_start": 31.84,
+      "timeline_end": 33.96,
+      "text": "我又想调到总公司来",
+      "words": [
+        {
+          "start": 31.84,
+          "end": 32.2,
+          "text": "我"
+        },
+        {
+          "start": 32.2,
+          "end": 32.38,
+          "text": "又"
+        },
+        {
+          "start": 32.38,
+          "end": 32.6,
+          "text": "想"
+        },
+        {
+          "start": 32.6,
+          "end": 32.9,
+          "text": "调"
+        },
+        {
+          "start": 32.9,
+          "end": 33.08,
+          "text": "到"
+        },
+        {
+          "start": 33.08,
+          "end": 33.32,
+          "text": "总"
+        },
+        {
+          "start": 33.32,
+          "end": 33.48,
+          "text": "公"
+        },
+        {
+          "start": 33.48,
+          "end": 33.72,
+          "text": "司"
+        },
+        {
+          "start": 33.72,
+          "end": 33.96,
+          "text": "来"
+        }
+      ]
+    },
+    {
+      "segment_id": "corruption-video",
+      "source_start": 6155.96,
+      "source_end": 6157.18,
+      "timeline_start": 33.96,
+      "timeline_end": 35.18,
+      "text": "我有一个老婆叫老婆",
+      "words": [
+        {
+          "start": 33.96,
+          "end": 34.18,
+          "text": "我有"
+        },
+        {
+          "start": 34.18,
+          "end": 34.32,
+          "text": "一个"
+        },
+        {
+          "start": 34.32,
+          "end": 34.48,
+          "text": "老"
+        },
+        {
+          "start": 34.48,
+          "end": 34.64,
+          "text": "婆"
+        },
+        {
+          "start": 34.64,
+          "end": 34.84,
+          "text": "叫"
+        },
+        {
+          "start": 34.84,
+          "end": 35.02,
+          "text": "老"
+        },
+        {
+          "start": 35.02,
+          "end": 35.18,
+          "text": "婆"
+        }
+      ]
+    },
+    {
+      "segment_id": "corruption-video",
+      "source_start": 6157.18,
+      "source_end": 6158.56,
+      "timeline_start": 35.18,
+      "timeline_end": 36.56,
+      "text": "那个我介绍了这个TOMAS",
+      "words": [
+        {
+          "start": 35.18,
+          "end": 35.34,
+          "text": "那个"
+        },
+        {
+          "start": 35.34,
+          "end": 35.48,
+          "text": "我"
+        },
+        {
+          "start": 35.48,
+          "end": 35.66,
+          "text": "介"
+        },
+        {
+          "start": 35.66,
+          "end": 35.84,
+          "text": "绍"
+        },
+        {
+          "start": 35.84,
+          "end": 35.94,
+          "text": "了"
+        },
+        {
+          "start": 35.94,
+          "end": 36.08,
+          "text": "这个"
+        },
+        {
+          "start": 36.08,
+          "end": 36.26,
+          "text": "T"
+        },
+        {
+          "start": 36.26,
+          "end": 36.3,
+          "text": "OM"
+        },
+        {
+          "start": 36.3,
+          "end": 36.56,
+          "text": "AS"
+        }
+      ]
+    },
+    {
+      "segment_id": "corruption-video",
+      "source_start": 6159.32,
+      "source_end": 6159.68,
+      "timeline_start": 37.32,
+      "timeline_end": 37.68,
+      "text": "我是",
+      "words": [
+        {
+          "start": 37.32,
+          "end": 37.68,
+          "text": "我是"
+        }
+      ]
+    },
+    {
+      "segment_id": "zhuang-meltdown",
+      "source_start": 6180.0,
+      "source_end": 6180.54,
+      "timeline_start": 38.0,
+      "timeline_end": 38.54,
+      "text": "别想活",
+      "words": [
+        {
+          "start": 38.0,
+          "end": 38.08,
+          "text": "别"
+        },
+        {
+          "start": 38.08,
+          "end": 38.28,
+          "text": "想"
+        },
+        {
+          "start": 38.28,
+          "end": 38.54,
+          "text": "活"
+        }
+      ]
+    },
+    {
+      "segment_id": "zhuang-meltdown",
+      "source_start": 6181.52,
+      "source_end": 6183.18,
+      "timeline_start": 39.52,
+      "timeline_end": 41.18,
+      "text": "这一刻来跟我们一起啊",
+      "words": [
+        {
+          "start": 39.52,
+          "end": 39.88,
+          "text": "这"
+        },
+        {
+          "start": 39.88,
+          "end": 40.24,
+          "text": "一"
+        },
+        {
+          "start": 40.24,
+          "end": 40.34,
+          "text": "刻"
+        },
+        {
+          "start": 40.34,
+          "end": 40.46,
+          "text": "来"
+        },
+        {
+          "start": 40.46,
+          "end": 40.56,
+          "text": "跟"
+        },
+        {
+          "start": 40.56,
+          "end": 40.62,
+          "text": "我们"
+        },
+        {
+          "start": 40.62,
+          "end": 40.8,
+          "text": "一起"
+        },
+        {
+          "start": 40.8,
+          "end": 41.18,
+          "text": "啊"
+        }
+      ]
+    },
+    {
+      "segment_id": "zhuang-meltdown",
+      "source_start": 6183.18,
+      "source_end": 6183.84,
+      "timeline_start": 41.18,
+      "timeline_end": 41.84,
+      "text": "那不是万哥",
+      "words": [
+        {
+          "start": 41.18,
+          "end": 41.3,
+          "text": "那"
+        },
+        {
+          "start": 41.3,
+          "end": 41.5,
+          "text": "不是"
+        },
+        {
+          "start": 41.5,
+          "end": 41.68,
+          "text": "万"
+        },
+        {
+          "start": 41.68,
+          "end": 41.84,
+          "text": "哥"
+        }
+      ]
+    },
+    {
+      "segment_id": "zhuang-meltdown",
+      "source_start": 6183.84,
+      "source_end": 6185.16,
+      "timeline_start": 41.84,
+      "timeline_end": 43.16,
+      "text": "那是你滚到我",
+      "words": [
+        {
+          "start": 41.84,
+          "end": 42.12,
+          "text": "那"
+        },
+        {
+          "start": 42.12,
+          "end": 42.44,
+          "text": "是"
+        },
+        {
+          "start": 42.44,
+          "end": 42.62,
+          "text": "你"
+        },
+        {
+          "start": 42.62,
+          "end": 42.84,
+          "text": "滚"
+        },
+        {
+          "start": 42.84,
+          "end": 42.98,
+          "text": "到"
+        },
+        {
+          "start": 42.98,
+          "end": 43.16,
+          "text": "我"
+        }
+      ]
+    },
+    {
+      "segment_id": "zhuang-meltdown",
+      "source_start": 6185.16,
+      "source_end": 6185.92,
+      "timeline_start": 43.16,
+      "timeline_end": 43.92,
+      "text": "你啥都过来",
+      "words": [
+        {
+          "start": 43.16,
+          "end": 43.32,
+          "text": "你"
+        },
+        {
+          "start": 43.32,
+          "end": 43.46,
+          "text": "啥"
+        },
+        {
+          "start": 43.46,
+          "end": 43.58,
+          "text": "都"
+        },
+        {
+          "start": 43.58,
+          "end": 43.78,
+          "text": "过"
+        },
+        {
+          "start": 43.78,
+          "end": 43.92,
+          "text": "来"
+        }
+      ]
+    },
+    {
+      "segment_id": "zhuang-meltdown",
+      "source_start": 6185.92,
+      "source_end": 6187.14,
+      "timeline_start": 43.92,
+      "timeline_end": 45.14,
+      "text": "你干什么干什么",
+      "words": [
+        {
+          "start": 43.92,
+          "end": 44.1,
+          "text": "你"
+        },
+        {
+          "start": 44.1,
+          "end": 44.42,
+          "text": "干"
+        },
+        {
+          "start": 44.42,
+          "end": 44.78,
+          "text": "什么"
+        },
+        {
+          "start": 44.78,
+          "end": 44.96,
+          "text": "干"
+        },
+        {
+          "start": 44.96,
+          "end": 45.14,
+          "text": "什么"
+        }
+      ]
+    },
+    {
+      "segment_id": "hu-truth-reveal",
+      "source_start": 6387.0,
+      "source_end": 6389.08,
+      "timeline_start": 64.0,
+      "timeline_end": 66.08,
+      "text": "视频里的王八蛋是装正职",
+      "words": [
+        {
+          "start": 64.0,
+          "end": 64.0,
+          "text": "视"
+        },
+        {
+          "start": 64.0,
+          "end": 64.18,
+          "text": "频"
+        },
+        {
+          "start": 64.18,
+          "end": 64.3,
+          "text": "里"
+        },
+        {
+          "start": 64.3,
+          "end": 64.42,
+          "text": "的"
+        },
+        {
+          "start": 64.42,
+          "end": 64.6,
+          "text": "王"
+        },
+        {
+          "start": 64.6,
+          "end": 64.7,
+          "text": "八"
+        },
+        {
+          "start": 64.7,
+          "end": 65.28,
+          "text": "蛋"
+        },
+        {
+          "start": 65.28,
+          "end": 65.48,
+          "text": "是"
+        },
+        {
+          "start": 65.48,
+          "end": 65.68,
+          "text": "装"
+        },
+        {
+          "start": 65.68,
+          "end": 65.84,
+          "text": "正"
+        },
+        {
+          "start": 65.84,
+          "end": 66.08,
+          "text": "职"
+        }
+      ]
+    },
+    {
+      "segment_id": "hu-truth-reveal",
+      "source_start": 6389.78,
+      "source_end": 6391.82,
+      "timeline_start": 66.78,
+      "timeline_end": 68.82,
+      "text": "搞笑的是他行会买了个工作",
+      "words": [
+        {
+          "start": 66.78,
+          "end": 67.18,
+          "text": "搞"
+        },
+        {
+          "start": 67.18,
+          "end": 67.38,
+          "text": "笑"
+        },
+        {
+          "start": 67.38,
+          "end": 67.58,
+          "text": "的是"
+        },
+        {
+          "start": 67.58,
+          "end": 67.78,
+          "text": "他"
+        },
+        {
+          "start": 67.78,
+          "end": 67.96,
+          "text": "行"
+        },
+        {
+          "start": 67.96,
+          "end": 68.1,
+          "text": "会"
+        },
+        {
+          "start": 68.1,
+          "end": 68.32,
+          "text": "买"
+        },
+        {
+          "start": 68.32,
+          "end": 68.44,
+          "text": "了"
+        },
+        {
+          "start": 68.44,
+          "end": 68.52,
+          "text": "个"
+        },
+        {
+          "start": 68.52,
+          "end": 68.82,
+          "text": "工作"
+        }
+      ]
+    },
+    {
+      "segment_id": "hu-truth-reveal",
+      "source_start": 6392.36,
+      "source_end": 6393.92,
+      "timeline_start": 69.36,
+      "timeline_end": 70.92,
+      "text": "结果把我给搓掉进来了",
+      "words": [
+        {
+          "start": 69.36,
+          "end": 69.56,
+          "text": "结"
+        },
+        {
+          "start": 69.56,
+          "end": 69.68,
+          "text": "果"
+        },
+        {
+          "start": 69.68,
+          "end": 69.88,
+          "text": "把"
+        },
+        {
+          "start": 69.88,
+          "end": 70.02,
+          "text": "我"
+        },
+        {
+          "start": 70.02,
+          "end": 70.16,
+          "text": "给"
+        },
+        {
+          "start": 70.16,
+          "end": 70.34,
+          "text": "搓"
+        },
+        {
+          "start": 70.34,
+          "end": 70.46,
+          "text": "掉"
+        },
+        {
+          "start": 70.46,
+          "end": 70.62,
+          "text": "进"
+        },
+        {
+          "start": 70.62,
+          "end": 70.92,
+          "text": "来了"
+        }
+      ]
+    },
+    {
+      "segment_id": "hu-truth-reveal",
+      "source_start": 6395.44,
+      "source_end": 6398.32,
+      "timeline_start": 72.44,
+      "timeline_end": 75.32,
+      "text": "更搞笑的是其实你们很多人都看出来了",
+      "words": [
+        {
+          "start": 72.44,
+          "end": 72.84,
+          "text": "更"
+        },
+        {
+          "start": 72.84,
+          "end": 73.0,
+          "text": "搞"
+        },
+        {
+          "start": 73.0,
+          "end": 73.2,
+          "text": "笑"
+        },
+        {
+          "start": 73.2,
+          "end": 73.44,
+          "text": "的是"
+        },
+        {
+          "start": 73.44,
+          "end": 73.7,
+          "text": "其实"
+        },
+        {
+          "start": 73.7,
+          "end": 73.92,
+          "text": "你们"
+        },
+        {
+          "start": 73.92,
+          "end": 74.26,
+          "text": "很多"
+        },
+        {
+          "start": 74.26,
+          "end": 74.46,
+          "text": "人"
+        },
+        {
+          "start": 74.46,
+          "end": 74.62,
+          "text": "都"
+        },
+        {
+          "start": 74.62,
+          "end": 74.82,
+          "text": "看"
+        },
+        {
+          "start": 74.82,
+          "end": 74.98,
+          "text": "出"
+        },
+        {
+          "start": 74.98,
+          "end": 75.32,
+          "text": "来了"
+        }
+      ]
+    },
+    {
+      "segment_id": "hu-truth-reveal",
+      "source_start": 6398.74,
+      "source_end": 6399.8,
+      "timeline_start": 75.74,
+      "timeline_end": 76.8,
+      "text": "我啥也不懂",
+      "words": [
+        {
+          "start": 75.74,
+          "end": 76.14,
+          "text": "我"
+        },
+        {
+          "start": 76.14,
+          "end": 76.36,
+          "text": "啥"
+        },
+        {
+          "start": 76.36,
+          "end": 76.5,
+          "text": "也"
+        },
+        {
+          "start": 76.5,
+          "end": 76.62,
+          "text": "不"
+        },
+        {
+          "start": 76.62,
+          "end": 76.8,
+          "text": "懂"
+        }
+      ]
+    },
+    {
+      "segment_id": "hu-truth-reveal",
+      "source_start": 6400.48,
+      "source_end": 6402.98,
+      "timeline_start": 77.48,
+      "timeline_end": 79.98,
+      "text": "但没人敢说都怕被过",
+      "words": [
+        {
+          "start": 77.48,
+          "end": 77.88,
+          "text": "但"
+        },
+        {
+          "start": 77.88,
+          "end": 78.04,
+          "text": "没"
+        },
+        {
+          "start": 78.04,
+          "end": 78.18,
+          "text": "人"
+        },
+        {
+          "start": 78.18,
+          "end": 78.34,
+          "text": "敢"
+        },
+        {
+          "start": 78.34,
+          "end": 78.58,
+          "text": "说"
+        },
+        {
+          "start": 78.58,
+          "end": 79.42,
+          "text": "都"
+        },
+        {
+          "start": 79.42,
+          "end": 79.62,
+          "text": "怕"
+        },
+        {
+          "start": 79.62,
+          "end": 79.78,
+          "text": "被"
+        },
+        {
+          "start": 79.78,
+          "end": 79.98,
+          "text": "过"
+        }
+      ]
+    },
+    {
+      "segment_id": "anti-layoff-speech",
+      "source_start": 6486.11,
+      "source_end": 6488.39,
+      "timeline_start": 80.11,
+      "timeline_end": 82.39,
+      "text": "公司也不应该是遇到了危机",
+      "words": [
+        {
+          "start": 80.11,
+          "end": 80.61,
+          "text": "公"
+        },
+        {
+          "start": 80.61,
+          "end": 80.83,
+          "text": "司"
+        },
+        {
+          "start": 80.83,
+          "end": 80.95,
+          "text": "也"
+        },
+        {
+          "start": 80.95,
+          "end": 81.21,
+          "text": "不"
+        },
+        {
+          "start": 81.21,
+          "end": 81.37,
+          "text": "应"
+        },
+        {
+          "start": 81.37,
+          "end": 81.53,
+          "text": "该"
+        },
+        {
+          "start": 81.53,
+          "end": 81.69,
+          "text": "是"
+        },
+        {
+          "start": 81.69,
+          "end": 81.81,
+          "text": "遇"
+        },
+        {
+          "start": 81.81,
+          "end": 82.01,
+          "text": "到了"
+        },
+        {
+          "start": 82.01,
+          "end": 82.19,
+          "text": "危"
+        },
+        {
+          "start": 82.19,
+          "end": 82.39,
+          "text": "机"
+        }
+      ]
+    },
+    {
+      "segment_id": "anti-layoff-speech",
+      "source_start": 6488.39,
+      "source_end": 6490.39,
+      "timeline_start": 82.39,
+      "timeline_end": 84.39,
+      "text": "就第一时间想怎么去财人",
+      "words": [
+        {
+          "start": 82.39,
+          "end": 82.53,
+          "text": "就"
+        },
+        {
+          "start": 82.53,
+          "end": 82.83,
+          "text": "第一"
+        },
+        {
+          "start": 82.83,
+          "end": 83.19,
+          "text": "时间"
+        },
+        {
+          "start": 83.19,
+          "end": 83.43,
+          "text": "想"
+        },
+        {
+          "start": 83.43,
+          "end": 83.71,
+          "text": "怎么"
+        },
+        {
+          "start": 83.71,
+          "end": 83.83,
+          "text": "去"
+        },
+        {
+          "start": 83.83,
+          "end": 84.07,
+          "text": "财"
+        },
+        {
+          "start": 84.07,
+          "end": 84.39,
+          "text": "人"
+        }
+      ]
+    },
+    {
+      "segment_id": "anti-layoff-speech",
+      "source_start": 6490.39,
+      "source_end": 6491.73,
+      "timeline_start": 84.39,
+      "timeline_end": 85.73,
+      "text": "财谁的人",
+      "words": [
+        {
+          "start": 84.39,
+          "end": 85.21,
+          "text": "财"
+        },
+        {
+          "start": 85.21,
+          "end": 85.45,
+          "text": "谁"
+        },
+        {
+          "start": 85.45,
+          "end": 85.73,
+          "text": "的人"
+        }
+      ]
+    },
+    {
+      "segment_id": "anti-layoff-speech",
+      "source_start": 6493.39,
+      "source_end": 6495.97,
+      "timeline_start": 87.39,
+      "timeline_end": 89.97,
+      "text": "他应该珍惜城市努力",
+      "words": [
+        {
+          "start": 87.39,
+          "end": 87.83,
+          "text": "他"
+        },
+        {
+          "start": 87.83,
+          "end": 88.01,
+          "text": "应"
+        },
+        {
+          "start": 88.01,
+          "end": 88.11,
+          "text": "该"
+        },
+        {
+          "start": 88.11,
+          "end": 88.31,
+          "text": "珍"
+        },
+        {
+          "start": 88.31,
+          "end": 88.59,
+          "text": "惜"
+        },
+        {
+          "start": 88.59,
+          "end": 89.41,
+          "text": "城"
+        },
+        {
+          "start": 89.41,
+          "end": 89.59,
+          "text": "市"
+        },
+        {
+          "start": 89.59,
+          "end": 89.75,
+          "text": "努"
+        },
+        {
+          "start": 89.75,
+          "end": 89.97,
+          "text": "力"
+        }
+      ]
+    }
+  ]
+}

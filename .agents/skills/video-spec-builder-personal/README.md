@@ -81,6 +81,7 @@ I want to make a 3-minute product demo, posting it on YouTube
 It takes over and starts asking. You don't need to track its internal steps; it just talks with you. First it pins down the basics: who it's for, where it's going, how long, the core message. Then it takes stock of the material you have. Then it settles the style and pacing, picks a visual theme, and finally uses reference videos and counter-examples to calibrate.
 
 It's a real conversation, not a form to fill in. Answer vaguely and it digs; miss something and it fills it in. When you're done, it writes out `video-spec.md`.
+Source footage is shared under assets/<film-slug>/; each independent deliverable gets its own projects/<project-slug>/ and outputs/<project-slug>/, linked through source_film_slug in project.json.
 
 ### Changing a video you already have
 
@@ -147,11 +148,11 @@ Once you've picked one, write its name into `video-spec.md`.
 
 If none of the presets fit, write your own. HyperFrames has a few hard rules for custom themes, nothing complicated:
 
-- A theme is a single `design.md` file, placed in the target film's `projects/<film-slug>/` working directory. HyperFrames resolves it within that film's project.
+- A theme is a single `design.md` file, placed in the target project's `projects/<project-slug>/` working directory. HyperFrames resolves it within that project's working directory.
 - The format is fixed. A block of YAML up top for the design variables: colors, fonts, corner radius, spacing, motion. Below it, a set of fixed sections describing the design rules in prose: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts.
-- If your theme uses a font HyperFrames doesn't ship with, put the font's `.woff2` files in the target film's working-directory `fonts/` folder yourself.
+- If your theme uses a font HyperFrames doesn't ship with, put the font's `.woff2` files in the target project's working-directory `fonts/` folder yourself.
 
-Drop a finished `design.md` into `projects/<film-slug>/` and the theme is live for that film.
+Drop a finished `design.md` into `projects/<project-slug>/` and the theme is live for that project.
 
 ### A theme I made for you: Spec Mono
 
@@ -171,7 +172,7 @@ The `spec-mono/` folder holds three files:
 | `tokens.css` | a ready-made CSS file: color/font/spacing variables, plus styles for some decorative elements |
 | `spec-mono-components.md` | the per-component spec for all 69 components under this theme |
 
-To use it, copy `spec-mono/design.md` into `projects/<film-slug>/` and bring `tokens.css` along. It's already written to HyperFrames' format, so it renders right away.
+To use it, copy `spec-mono/design.md` into `projects/<project-slug>/` and bring `tokens.css` along. It's already written to HyperFrames' format, so it renders right away.
 
 > **Heads up:** the `design.md` tokens and `spec-mono-components.md` here are only a distilled, condensed extract. The complete theme design code is generated and downloaded from Claude Design. For the full implementation code, see the `Full Code/` folder.
 
