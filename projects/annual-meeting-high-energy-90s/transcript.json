@@ -1,0 +1,384 @@
+{
+  "engine": "curated",
+  "source": "assets/annual-meeting/media/年会不能停！.mp4",
+  "basis": [
+    "faster-whisper small CPU int8 segment timing",
+    "assets/annual-meeting/analysis/shot-refine.json dialogue"
+  ],
+  "authoritative_srt": false,
+  "subtitle_mode": "full-sentence-with-keyword-emphasis",
+  "cues": [
+    {
+      "id": 1,
+      "segment_id": "gala-performance-hook",
+      "timeline_start": 0.0,
+      "timeline_end": 2.8,
+      "text": "我的未来不是梦",
+      "emphasis": [
+        "未来",
+        "不是梦"
+      ]
+    },
+    {
+      "id": 2,
+      "segment_id": "gala-performance-hook",
+      "timeline_start": 3.0,
+      "timeline_end": 5.9,
+      "text": "我认真地过每一分钟",
+      "emphasis": [
+        "认真",
+        "每一分钟"
+      ]
+    },
+    {
+      "id": 3,
+      "segment_id": "gala-rap-opening",
+      "timeline_start": 6.0,
+      "timeline_end": 7.9,
+      "text": "跟着希望在动",
+      "emphasis": [
+        "希望"
+      ]
+    },
+    {
+      "id": 4,
+      "segment_id": "gala-rap-opening",
+      "timeline_start": 8.0,
+      "timeline_end": 10.7,
+      "text": "你是不是像我在裁员中忐忑",
+      "emphasis": [
+        "裁员",
+        "忐忑"
+      ]
+    },
+    {
+      "id": 5,
+      "segment_id": "gala-rap-opening",
+      "timeline_start": 10.8,
+      "timeline_end": 13.9,
+      "text": "守着岗位加班加点地工作",
+      "emphasis": [
+        "加班加点"
+      ]
+    },
+    {
+      "id": 6,
+      "segment_id": "gala-rap-opening",
+      "timeline_start": 14.0,
+      "timeline_end": 17.8,
+      "text": "也放不下五险一金的枷锁",
+      "emphasis": [
+        "五险一金",
+        "枷锁"
+      ]
+    },
+    {
+      "id": 7,
+      "segment_id": "corruption-video",
+      "timeline_start": 18.0,
+      "timeline_end": 20.3,
+      "text": "面对不公，就应该打破沉默",
+      "emphasis": [
+        "不公",
+        "打破沉默"
+      ]
+    },
+    {
+      "id": 8,
+      "segment_id": "corruption-video",
+      "timeline_start": 20.4,
+      "timeline_end": 23.6,
+      "text": "我是标准件厂的供销科科长",
+      "emphasis": [
+        "供销科科长"
+      ]
+    },
+    {
+      "id": 9,
+      "segment_id": "corruption-video",
+      "timeline_start": 23.7,
+      "timeline_end": 26.3,
+      "text": "我就想调到总公司来",
+      "emphasis": [
+        "总公司"
+      ]
+    },
+    {
+      "id": 10,
+      "segment_id": "corruption-video",
+      "timeline_start": 26.4,
+      "timeline_end": 29.3,
+      "text": "我有一个老客户，叫老侯",
+      "emphasis": [
+        "老客户",
+        "老侯"
+      ]
+    },
+    {
+      "id": 11,
+      "segment_id": "corruption-video",
+      "timeline_start": 29.4,
+      "timeline_end": 32.0,
+      "text": "给我介绍了这个托马斯",
+      "emphasis": [
+        "托马斯"
+      ]
+    },
+    {
+      "id": 12,
+      "segment_id": "corruption-video",
+      "timeline_start": 32.1,
+      "timeline_end": 35.1,
+      "text": "只要我帮您办一件事，您就肯定能把我调到总公司",
+      "emphasis": [
+        "办一件事",
+        "调到总公司"
+      ]
+    },
+    {
+      "id": 13,
+      "segment_id": "corruption-video",
+      "timeline_start": 35.2,
+      "timeline_end": 38.0,
+      "text": "这几年也换出来好几百万的差价了",
+      "emphasis": [
+        "好几百万",
+        "差价"
+      ]
+    },
+    {
+      "id": 14,
+      "segment_id": "zhuang-meltdown",
+      "timeline_start": 38.0,
+      "timeline_end": 39.5,
+      "text": "你干什么干什么！",
+      "emphasis": [
+        "干什么"
+      ]
+    },
+    {
+      "id": 15,
+      "segment_id": "zhuang-meltdown",
+      "timeline_start": 39.6,
+      "timeline_end": 41.4,
+      "text": "你们谁啊？",
+      "emphasis": [
+        "你们谁"
+      ]
+    },
+    {
+      "id": 16,
+      "segment_id": "zhuang-meltdown",
+      "timeline_start": 41.5,
+      "timeline_end": 43.6,
+      "text": "我二话没说，三十万我马上打过去",
+      "emphasis": [
+        "三十万"
+      ]
+    },
+    {
+      "id": 17,
+      "segment_id": "zhuang-meltdown",
+      "timeline_start": 43.7,
+      "timeline_end": 46.0,
+      "text": "结果托马斯他居然找了一批人……你知道我多惨吗？",
+      "emphasis": [
+        "托马斯",
+        "多惨"
+      ]
+    },
+    {
+      "id": 18,
+      "segment_id": "rap-climax",
+      "timeline_start": 46.0,
+      "timeline_end": 48.2,
+      "text": "我是外包潘妮潘，脏活累活都我干",
+      "emphasis": [
+        "外包",
+        "脏活累活"
+      ]
+    },
+    {
+      "id": 19,
+      "segment_id": "rap-climax",
+      "timeline_start": 48.3,
+      "timeline_end": 50.4,
+      "text": "功劳薄与我无关，说话从不兜弯弯",
+      "emphasis": [
+        "功劳"
+      ]
+    },
+    {
+      "id": 20,
+      "segment_id": "rap-climax",
+      "timeline_start": 50.5,
+      "timeline_end": 53.0,
+      "text": "基层人心惶惶，中层拉帮结党",
+      "emphasis": [
+        "人心惶惶",
+        "拉帮结党"
+      ]
+    },
+    {
+      "id": 21,
+      "segment_id": "rap-climax",
+      "timeline_start": 53.1,
+      "timeline_end": 55.8,
+      "text": "表面风光全是假象",
+      "emphasis": [
+        "假象"
+      ]
+    },
+    {
+      "id": 22,
+      "segment_id": "rap-climax",
+      "timeline_start": 55.9,
+      "timeline_end": 58.4,
+      "text": "财务危机，贪污腐败不停",
+      "emphasis": [
+        "财务危机",
+        "贪污腐败"
+      ]
+    },
+    {
+      "id": 23,
+      "segment_id": "rap-climax",
+      "timeline_start": 58.5,
+      "timeline_end": 61.0,
+      "text": "我是员工不是奴隶，也想做我自己",
+      "emphasis": [
+        "员工",
+        "不是奴隶"
+      ]
+    },
+    {
+      "id": 24,
+      "segment_id": "rap-climax",
+      "timeline_start": 61.1,
+      "timeline_end": 64.0,
+      "text": "胡师傅说真话从不后悔，请相信",
+      "emphasis": [
+        "说真话",
+        "不后悔"
+      ]
+    },
+    {
+      "id": 25,
+      "segment_id": "hu-truth-reveal",
+      "timeline_start": 64.0,
+      "timeline_end": 66.0,
+      "text": "刚才那个视频里的王八蛋是庄正直",
+      "emphasis": [
+        "王八蛋",
+        "庄正直"
+      ]
+    },
+    {
+      "id": 26,
+      "segment_id": "hu-truth-reveal",
+      "timeline_start": 66.1,
+      "timeline_end": 68.4,
+      "text": "搞笑的是，他行贿买了个工作",
+      "emphasis": [
+        "行贿",
+        "买了个工作"
+      ]
+    },
+    {
+      "id": 27,
+      "segment_id": "hu-truth-reveal",
+      "timeline_start": 68.5,
+      "timeline_end": 71.0,
+      "text": "结果把我给错调进来了",
+      "emphasis": [
+        "错调"
+      ]
+    },
+    {
+      "id": 28,
+      "segment_id": "hu-truth-reveal",
+      "timeline_start": 71.1,
+      "timeline_end": 73.0,
+      "text": "更搞笑的是，其实你们很多人都看出来了",
+      "emphasis": [
+        "看出来了"
+      ]
+    },
+    {
+      "id": 29,
+      "segment_id": "hu-truth-reveal",
+      "timeline_start": 73.1,
+      "timeline_end": 75.0,
+      "text": "我啥也不懂，但没人敢说",
+      "emphasis": [
+        "没人敢说"
+      ]
+    },
+    {
+      "id": 30,
+      "segment_id": "hu-truth-reveal",
+      "timeline_start": 75.1,
+      "timeline_end": 77.0,
+      "text": "都怕背锅",
+      "emphasis": [
+        "背锅"
+      ]
+    },
+    {
+      "id": 31,
+      "segment_id": "hu-truth-reveal",
+      "timeline_start": 77.1,
+      "timeline_end": 80.0,
+      "text": "结果我升职加薪，风生水起",
+      "emphasis": [
+        "升职加薪",
+        "风生水起"
+      ]
+    },
+    {
+      "id": 32,
+      "segment_id": "anti-layoff-speech",
+      "timeline_start": 80.0,
+      "timeline_end": 82.4,
+      "text": "公司也不应该是遇到了危机",
+      "emphasis": [
+        "公司",
+        "危机"
+      ]
+    },
+    {
+      "id": 33,
+      "segment_id": "anti-layoff-speech",
+      "timeline_start": 82.4,
+      "timeline_end": 84.7,
+      "text": "就第一时间想怎么去裁人，裁谁的人",
+      "emphasis": [
+        "第一时间",
+        "裁人"
+      ]
+    },
+    {
+      "id": 34,
+      "segment_id": "anti-layoff-speech",
+      "timeline_start": 84.8,
+      "timeline_end": 87.2,
+      "text": "它应该珍惜诚实努力的人，默默付出的人",
+      "emphasis": [
+        "珍惜",
+        "诚实努力"
+      ]
+    },
+    {
+      "id": 35,
+      "segment_id": "anti-layoff-speech",
+      "timeline_start": 87.3,
+      "timeline_end": 90.0,
+      "text": "敢于让大家说真话，说实话。谢谢！",
+      "emphasis": [
+        "说真话",
+        "说实话",
+        "谢谢"
+      ]
+    }
+  ]
+}

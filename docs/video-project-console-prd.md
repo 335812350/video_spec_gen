@@ -59,8 +59,8 @@ A single local video creator who uses Codex and the repository skills to create 
 - Preserve editable inputs and generated engineering artifacts, not only the final MP4.
 - Reuse the repository's directory boundaries:
   - `assets/<film-slug>/` for user-provided source material;
-  - `projects/<film-slug>/` for editable project artifacts;
-  - `outputs/<film-slug>/` for versioned playable outputs.
+  - `projects/<project-slug>/` for editable project artifacts;
+  - `outputs/<project-slug>/` for versioned playable outputs.
 - Ensure new renders never overwrite existing outputs.
 
 ## 5. Non-Goals For Version 1
@@ -93,7 +93,7 @@ Local Console API
 Project Runner
   - starts/resumes Codex, tracks a run, converts process output to events
                  |
-Codex session in projects/<film-slug>/
+Codex session in projects/<project-slug>/
   - loads the configured video skills, edits files, runs analysis/check/render
                  |
 File system
@@ -104,13 +104,23 @@ The browser must never directly browse arbitrary disk paths. The local API allow
 
 ## 8. Canonical Workspace Contract
 
+### 8.0 Source film and video project identities
+
+The repository distinguishes the source film from each independently managed video deliverable:
+
+- `film-slug` identifies shared source material under `assets/<film-slug>/`.
+- `project-slug` identifies one deliverable with its own brief, spec, composition, runs, QA, and output versions.
+- Different video types, platforms, durations, narration strategies, or editorial goals use different top-level `project-slug` directories.
+- `variant_id` describes a candidate or experiment inside a batch; it does not create a nested project directory by default.
+- A project manifest links the two identities with `source_film_slug`.
+
 ### 8.1 Directory layout
 
 ```text
 assets/<film-slug>/
   source/                         original user-provided media and references
 
-projects/<film-slug>/
+projects/<project-slug>/
   project.json                    project manifest and UI index
   brief.md                        user intent and current requirement
   edit-plan.md                    editable editorial plan
@@ -127,7 +137,7 @@ projects/<film-slug>/
     logs/codex.log                 raw runner output
     logs/render.log                renderer output
 
-outputs/<film-slug>/
+outputs/<project-slug>/
   render-v001.mp4
   render-v002.mp4
   qa-v001.json
@@ -136,7 +146,9 @@ outputs/<film-slug>/
 
 `assets/<film-slug>/` contains inputs only. Generated specifications, project files, previews, run state, and rendered outputs must never be written there.
 
-The existing `videos/<film-slug>/` directory remains legacy material. New console projects use `projects/<film-slug>/` and `outputs/<film-slug>/`.
+The existing `videos/<film-slug>/` directory remains legacy material. New console projects use top-level `projects/<project-slug>/` and `outputs/<project-slug>/` directories. Shared source material remains under `assets/<film-slug>/`; the project manifest records `source_film_slug`.
+
+The former `projects/annual-meeting/high-energy-90s/` directory has been normalized to the top-level project `projects/annual-meeting-high-energy-90s/`. The migration preserved existing files and updated the project manifest, source path, edit plan, and BGM reference; no source media was copied into `assets/`.
 
 ### 8.2 Project manifest
 
@@ -145,8 +157,10 @@ The existing `videos/<film-slug>/` directory remains legacy material. New consol
 ```json
 {
   "schema_version": 1,
-  "id": "annual-meeting-trailer",
-  "title": "Annual Meeting Trailer",
+  "id": "annual-meeting-high-energy-90s",
+  "source_film_slug": "annual-meeting",
+  "video_type": "high-energy-clip",
+  "title": "Annual Meeting High Energy 90s",
   "created_at": "2026-08-30T12:00:00+08:00",
   "updated_at": "2026-08-30T12:20:00+08:00",
   "status": "ready",
@@ -156,7 +170,7 @@ The existing `videos/<film-slug>/` directory remains legacy material. New consol
   "storyboard_path": "storyboard.json",
   "spec_path": "video-spec.md",
   "composition_path": "hyperframes/",
-  "latest_output": "../../outputs/annual-meeting-trailer/render-v001.mp4"
+  "latest_output": "../../outputs/annual-meeting-high-energy-90s/render-v001.mp4"
 }
 ```
 
@@ -171,7 +185,7 @@ Each user request that launches work creates a new `runs/<run-id>/` directory. A
 ```json
 {"seq":17,"time":"2026-08-30T12:04:12+08:00","type":"stage.started","stage":"render","message":"Starting HyperFrames render"}
 {"seq":18,"time":"2026-08-30T12:05:03+08:00","type":"progress","stage":"render","percent":42,"message":"Rendering frame 840/2000"}
-{"seq":19,"time":"2026-08-30T12:07:55+08:00","type":"artifact.created","path":"../../outputs/annual-meeting-trailer/render-v001.mp4","kind":"video"}
+{"seq":19,"time":"2026-08-30T12:07:55+08:00","type":"artifact.created","path":"../../outputs/annual-meeting-high-energy-90s/render-v001.mp4","kind":"video"}
 ```
 
 Required event types:
@@ -197,7 +211,7 @@ Required event types:
 
 ### 9.1 Project management
 
-- The home view lists all directories under `projects/` with title, status, latest activity, active stage, and latest output.
+- The home view lists each top-level directory under `projects/` as an independently managed video project with title, source film, status, latest activity, active stage, and latest output.
 - The user can create a project from a kebab-case slug and title.
 - Project creation produces the canonical directory structure and a valid `project.json`.
 - The user can archive a project only through an explicit UI action; version 1 does not permanently delete projects or source material from the UI.
@@ -208,7 +222,7 @@ Required event types:
 - The user can choose an existing file or directory under `assets/<film-slug>/` and register it in the project manifest.
 - The console records relative path, media type, byte size, duration/resolution when available, source label, and optional notes.
 - The API uses `ffprobe` or equivalent local inspection for video/audio metadata; it does not load the entire media file into memory.
-- The console may generate thumbnails, contact sheets, or proxy media under `projects/<film-slug>/`, never beside the source asset.
+- The console may generate thumbnails, contact sheets, or proxy media under `projects/<project-slug>/`, never beside the source asset.
 - Version 1 does not accept browser uploads for video material.
 
 ### 9.3 Project chat and Codex execution
@@ -313,12 +327,12 @@ The API must bind to localhost by default. It must reject absolute paths, traver
 
 ## 12. Acceptance Criteria For Version 1
 
-1. A user can create `projects/<film-slug>/` from the console without manually creating project metadata.
+1. A user can create `projects/<project-slug>/` from the console without manually creating project metadata.
 2. A user can register a local source video from `assets/<film-slug>/` and see its metadata in the project.
 3. A project chat message starts a Codex-backed run in the correct workspace with the configured skills.
 4. During a run, the UI receives live stage, log, progress, and artifact events without polling the entire project directory.
 5. The user can inspect the current storyboard, `video-spec.md`, composition files, and raw run logs from the project page.
-6. A render creates the next available `outputs/<film-slug>/render-vNNN.mp4` and never overwrites a previous output.
+6. A render creates the next available `outputs/<project-slug>/render-vNNN.mp4` and never overwrites a previous output.
 7. A stopped run retains `events.jsonl`, logs, and a checkpoint; after restart, the project displays it as interrupted and offers a resume path.
 8. No project state requires a database or remote service to open and inspect.
 9. The legacy `videos/` directory is not used as the default destination for new projects or renders.
@@ -359,7 +373,7 @@ The API must bind to localhost by default. It must reject absolute paths, traver
 
 - The product starts as a local web application. A desktop wrapper is optional later, not a Version 1 dependency.
 - The file system, not a database, is authoritative.
-- `projects/<film-slug>/project.json` is the compact project index.
+- `projects/<project-slug>/project.json` is the compact project index.
 - Each Codex request produces an immutable run directory and append-only event history.
 - Codex and the two existing skills are the execution engine; the console does not reimplement their domain logic.
 - MuseDock is not a runtime dependency for Version 1.

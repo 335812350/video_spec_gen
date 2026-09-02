@@ -6,7 +6,7 @@ description: 迭代模式工作流。用户修改已有 video-spec.md 时使用�
 # 迭代模式工作流
 
 [触发条件]
-    用户在目标影片 `projects/<film-slug>/` 已有 `video-spec.md` 的情况下提出修改 /
+    用户在目标项目 `projects/<project-slug>/` 已有 `video-spec.md` 的情况下提出修改 /
     新增 / 调整 / 替换 / 风格变更。影片选择和路径解析遵循
     `references/project-layout.md`。
 
@@ -93,7 +93,7 @@ description: 迭代模式工作流。用户修改已有 video-spec.md 时使用�
 ## [更新文档]
 
 [纪律]
-    - 在目标影片 `projects/<film-slug>/video-spec.md` 上精确修改（不另存第二个 spec）
+    - 在目标项目 `projects/<project-slug>/video-spec.md` 上精确修改（不另存第二个 spec）
     - 不改文档 markdown 结构（标题层级 / 列表风格）
     - 不删除用户的注释 / 备注
     - 改了分镜表 → 用 `references/spec-rules.md` 的字段约束和 [交付前自检清单] 重新核对
@@ -103,7 +103,7 @@ description: 迭代模式工作流。用户修改已有 video-spec.md 时使用�
 
 ## [完成后告诉用户]
 
-    `projects/<film-slug>/video-spec.md` 已更新。
+    `projects/<project-slug>/video-spec.md` 已更新；该项目的 `source_film_slug` 与交付目标保持不变。
     - 改动总览：[哪些 Scene / 总时长怎么变 / 素材新增项]
     - 如果影响渲染，输入 /hyperframes 重新生成下一个
-      `outputs/<film-slug>/render-vNNN.mp4`，不覆盖旧版本
+      `outputs/<project-slug>/render-vNNN.mp4`，不覆盖旧版本

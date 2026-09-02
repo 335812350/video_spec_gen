@@ -27,14 +27,16 @@
 - 审阅完成后运行 `npx hyperframes preview --stop`。
 - 渲染期间和完成后不要保留预览服务器。
 
-## 素材与影片目录
+## 素材、影片与视频项目目录
 
 - `assets/<film-slug>/` 是影片输入边界，存放用户提供的源视频、音频、字幕、图形和参考资料。
 - `assets/<film-slug>/references/` 可存放联网检索得到的公开资料、摘录和来源记录；这些属于研究输入，不是渲染产物。
 - 研究资料保留来源 URL；大型媒体除非用户明确要求，否则只记录来源，不默认下载。
 - 不要把 `video-spec.md`、`edit-plan.md`、预览、渲染视频或生成音频写入 `assets/`。
-- `projects/<film-slug>/` 存放 spec、分镜和可编辑项目文件。
-- `outputs/<film-slug>/` 存放递增版本的 `render-vNNN.mp4`。
+- `projects/<project-slug>/` 表示一个独立的视频交付项目，存放其 spec、分镜、HyperFrames 工程和运行记录。
+- `outputs/<project-slug>/` 存放该视频项目递增版本的 `render-vNNN.mp4`。
+- 同一影片的不同视频类型、平台、时长或音频策略必须使用不同的 `project-slug`；不把一个交付项目嵌套到另一个项目目录下。
+- 项目的 `project.json` 使用 `source_film_slug` 关联共享的 `assets/<film-slug>/`；`variant_id` 只记录批次候选或实验，不默认创建目录。
 - `videos/` 仅作为旧版工作目录，除非用户明确指定，否则不作为新产物位置。
 - 不覆盖已有渲染版本，不重写历史 spec、manifest、音频或视频。
 - 用户提供的素材默认可用于当前本地制作，不反复提出无关版权警告。
@@ -49,8 +51,8 @@
 
 ## 文档与控制台
 
-- README 保持简洁；详细说明放入现有 `docs/` 或对应影片的 `projects/<film-slug>/`。
+- README 保持简洁；详细说明放入现有 `docs/` 或对应影片的 `projects/<project-slug>/`。
 - 重大用户可感知改动同步更新相关文档。
-- `console` 的运行事件保持追加式，状态文件使用原子写入，不静默删除或裁剪历史记录。
+- 当前项目暂不使用 `console/` 文件夹；处理其他功能时默认忽略其中的代码、依赖和生成内容，除非用户明确要求修改 `console/` 。
 - 本地验收时不要关闭用户已有的浏览器窗口或标签页。
 - 反复出现的问题沉淀为本文件中的明确规则。

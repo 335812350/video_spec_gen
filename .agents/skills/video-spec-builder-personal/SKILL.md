@@ -1,7 +1,16 @@
 ---
 name: video-spec-builder-personal
-description: 个人版视频规格编排 skill。用于在多影片项目中，把指定影片的想法或已有规格逐步整理成可执行的分镜规格，并按版本输出可观看的视频；新影片开始前自动检索并补全公开资料到 assets/{film-slug}/references/，当前以 video-spec-builder 为基线，后续按个人工作流迭代。
+description: Use when 用户需要从视频想法、素材或已有规格编排通用分镜和 video-spec，且没有匹配的独立视频类型工作流。
 ---
+
+[工作流定位]
+    本 Skill 是视频生产平台第二层的一条影片素材驱动生产工作流，不是平台调度层。
+    默认由 `video-production-dispatcher` 根据用户意图选择；直接调用本 Skill 时保留原有 0-1 / 迭代行为。
+
+    - 调度层已经传入 `workflow_id`、`workflow_version`、`video_type` 或上下文时，沿用已确认的路由，不重新选择顶层工作流。
+    - 没有路由上下文的直接调用，默认按 `generic-video` 工作流记录；影片素材只是本工作流支持的一类输入来源。
+    - 本工作流负责影片研究、需求追问、叙事与剪辑规划、分镜和 `video-spec.md`；TTS、字幕、音频与 HyperFrames 是可调用能力，不是新的顶层工作流。
+    - 生成规格后，先完成工作流内部自检并请用户确认，再进入 HyperFrames 的 lint/check/preview/render；本 Skill 不负责独立运行审核 Agent 或平台级任务调度。
 
 [新影片资料补全（强制前置）]
     只要用户给出一个此前没有工作文件的新影片，先执行
@@ -26,19 +35,21 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
     **迭代模式**：用户对已有 video-spec.md 提出修改（换镜头/改节奏/换音乐/调字幕/换配色）时，通过追问帮用户想清楚变更，检测与现有 spec 的冲突，更新 `video-spec.md`。
 
 [启动检查]
-    1. 先确定目标影片：优先使用用户明确给出的片名、`<film-slug>` 或路径。
-       无法唯一确定时，列出候选影片并询问，不要扫描整个仓库后自行猜测。
-    2. 影片目录约定见 `references/project-layout.md`。只在目标影片的
-       `projects/<film-slug>/` 中查找 `video-spec.md`、`edit-plan.md` 或
+    1. 先确定源影片和交付项目：优先使用用户明确给出的片名、`<film-slug>`、`<project-slug>` 或路径。
+       无法唯一确定源影片或项目时，列出候选并询问，不要扫描整个仓库后自行猜测。
+    2. 项目目录约定见 `references/project-layout.md`。先确定 `film-slug` 与 `project-slug`，只在目标项目的
+       `projects/<project-slug>/` 中查找 `video-spec.md`、`edit-plan.md` 或
        storyboard 文件；不要把其他影片的文件当作当前项目。
     3. 已有 spec / edit plan 且用户要求修改 → 迭代模式（read
-       `references/workflow-iteration.md`）。用户明确要新片 → 在新的
-       `<film-slug>` 下走 0-1 模式，即使仓库里已有其他影片。
-    4. 没有目标影片的工作文件 → 0-1 模式（read
+       `references/workflow-iteration.md`）。同一影片但交付目标不同 → 创建新的
+       `<project-slug>`，走 0-1 模式，并在 manifest 中填写 `source_film_slug`。
+    4. 没有目标项目的工作文件 → 0-1 模式（read
        `references/workflow-0-1.md`）。根目录的旧 `video-spec.md` 只读并
        视为 legacy，不能作为新片默认输出位置。
-    5. 视觉主题文件只在目标影片工作目录中解析；解析顺序和文件位置见
+    5. 视觉主题文件只在目标项目工作目录中解析；解析顺序和文件位置见
        `references/project-layout.md`。
+    6. 若调度层已传入工作流上下文，沿用其结果，不重新选择平台级工作流。
+       本 Skill 只处理通用的视频规格编排；已注册的独立类型工作流由调度层直接加载。
 
 [项目边界与产物]
     - `assets/<film-slug>/` 是输入边界：保留用户提供的源视频、音频、字幕、图形和分析，
@@ -47,14 +58,14 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
     - 用户提供的素材默认已获授权，当前工作以本地制作和效果验证为目的；剪辑时可以正常使用，
       不因版权或隐私问题反复打断工作。只有用户要求公开发布，或素材来源并非用户提供且不明确时，
       才重新核对授权问题。
-    - `projects/<film-slug>/` 放可编辑的中间和工作文件。至少包括
-      `video-spec.md`；后续剪辑审阅会使用同目录的 `edit-plan.md`。
-    - `outputs/<film-slug>/` 只放渲染得到的可观看视频，文件名为
+    - `projects/<project-slug>/` 放一个独立视频交付项目的可编辑中间和工作文件。至少包括
+      `video-spec.md`；后续剪辑审阅会使用同目录的 `edit-plan.md`。同一影片的其他视频类型必须使用新的 `project-slug`，不能放进此目录的子目录。
+    - `outputs/<project-slug>/` 只放渲染得到的可观看视频，文件名为
       `render-v001.mp4`、`render-v002.mp4` 等。每次新渲染递增版本，不覆盖旧文件。
       每个版本都可以直接观看，不另设“预览版 / 最终版”产物类别。
     - 不建立 `final/` 或 `publish/` 目录。系统不判断哪个版本是最终版，
       由用户自行选择和使用。
-    - 所有路径相对于仓库根目录或目标影片工作目录明确写出，不能把
+    - 所有路径相对于仓库根目录或目标项目工作目录明确写出，不能把
       `assets`、`projects`、`outputs` 三层混为一个“项目根目录”。
 
 [第一性原则]
@@ -104,14 +115,14 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
     - **能力激发**：对照 [能力对照表] 主动告诉用户能做什么，不等用户开口（核心特色）
     - **素材盘点**：逐字稿 / 音频 / 视频 / 图形 / 3D / 数据 逐项盘问，不让用户漏报
     - **场景拆解**：把逐字稿、卖点、剧本拆到单镜头粒度，每镜头锚定到 `references/components-catalog.md` 的具体组件 ID
-    - **中间产物**：先在影片工作目录维护可审阅的 `edit-plan.md`，再生成 `video-spec.md`
+    - **中间产物**：先在项目工作目录维护可审阅的 `edit-plan.md`，再生成 `video-spec.md`
     - **节奏与转场**：根据视频类型 / 平台判节奏基准；决定每镜头之间的转场（crossfade / wipe / shader / hard cut）
     - **冲突检测**：迭代时检测新需求与现有 spec 的冲突，主动指出
     - **方案引导**：用户卡住时给 2-3 个具体方案 + 优劣 + 参考视频
     - **结构化输出**：按 `templates/video-spec-template.md` 输出，含分镜表
 
 [文件结构]
-    仓库根目录是多影片集合；目标影片的路径和产物边界以
+    仓库根目录是多影片集合；目标项目的路径和产物边界以
     `references/project-layout.md` 为准。一棵示意树：
 
     ```
@@ -119,17 +130,17 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
     ├── assets/
     │   └── <film-slug>/                         # 用户提供的输入素材
     ├── projects/
-    │   └── <film-slug>/                         # spec、edit-plan、HyperFrames 工程
+    │   └── <project-slug>/                      # 一个独立视频交付项目的 spec、edit-plan、HyperFrames 工程
     │       ├── video-spec.md
     │       ├── edit-plan.md                     # 后续逐步加入
     │       └── design.md / frame.md             # 按 HyperFrames 契约选用
     └── outputs/
-        └── <film-slug>/                         # 可观看渲染版本
+        └── <project-slug>/                      # 该视频项目的可观看渲染版本
             ├── render-v001.mp4
             └── render-v002.mp4
     ```
 
-    `assets/`、`projects/`、`outputs/` 的职责不能互换。主题文件属于目标影片
+    `assets/`、`projects/`、`outputs/` 的职责不能互换。主题文件属于目标项目
     的工作目录；不要在仓库根目录创建共享的单片 `design.md`。
 
 [输出风格]
@@ -247,8 +258,8 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
         用户选择 AI 配音时，读取 `.agents/skills/aliyun-tts/SKILL.md`；模型、音色、复刻和凭证规则集中在那里。
 
 [主题选择]
-    设计风格没有提前内部预制。主题文件属于目标影片的工作目录
-    `projects/<film-slug>/`；实际文件解析顺序见 `references/project-layout.md`。
+    设计风格没有提前内部预制。主题文件属于目标项目的工作目录
+    `projects/<project-slug>/`；实际文件解析顺序见 `references/project-layout.md`。
     用户选定主题后写到 `video-spec.md` 的 theme 字段。
 
     2 条路径任选其一：
@@ -259,19 +270,19 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
             每个一句话标签详见 `references/question-bank.md` Phase 4。
             预设是 HyperFrames 自带的，不需要建任何文件 —— 只在 spec 里记下预设名。
 
-        路径 2：用户自定义主题 —— 落成目标影片工作目录的主题文件
+        路径 2：用户自定义主题 —— 落成目标项目工作目录的主题文件
             两种入口：
             (a) 已有文件：用户把自己的 `design.md`（HyperFrames YAML 格式）放到
-                `projects/<film-slug>/`；若另有可复用 CSS，一并放该工作目录（如 `tokens.css`）。
+                `projects/<project-slug>/`；若另有可复用 CSS，一并放该工作目录（如 `tokens.css`）。
             (b) 描述生成：用户描述风格（三个形容词 / 参考链接 / 类似品牌），你上网调研后
-                **直接在目标影片工作目录生成 `design.md`** —— 必须是 HyperFrames 的格式：
+                **直接在目标项目工作目录生成 `design.md`** —— 必须是 HyperFrames 的格式：
                 YAML 头（colors / typography / rounded / spacing / motion）
                 + 章节（Overview / Colors / Typography / Elevation / Components / Do's and Don'ts）。
                 格式范本见 HyperFrames 的 `visual-styles.md`。
 
     选定主题后写进 `video-spec.md` 的 § 4 视觉规范：
         - 选预设：写预设名，如 `Swiss Pulse`
-        - 自定义：写 `design.md（目标影片工作目录）`
+        - 自定义：写 `design.md（目标项目工作目录）`
 
     [选定主题后]
         - 该主题的细节对该视频跟着定下来，不再追问字体 / 字重 / 字号
@@ -283,8 +294,8 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
 
     [没有 styles/ 文件夹 —— 旧设计已废弃]
         旧版本把自定义主题放 `./styles/<name>/` 下的三件套（theme.md / tokens.css / design.md）。
-        已废弃。HyperFrames 不读 `styles/` 文件夹；自定义主题直接放目标影片的
-        `projects/<film-slug>/` 工作目录，不经任何中转。
+        已废弃。HyperFrames 不读 `styles/` 文件夹；自定义主题直接放目标项目的
+        `projects/<project-slug>/` 工作目录，不经任何中转。
 
 [需求维度清单]
     收集以下维度的信息，每个维度的 [覆盖意图] / [主问题] / [追问深化] / [接受标准] / [不接受的答案] → `references/question-bank.md`。
@@ -319,7 +330,8 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
     **素材盘点**：聊完基本盘后按 逐字稿 → 音频 → 视频 → 图形 → 数据 → 3D 顺序盘问；
                   缺的素材立刻判断能否 AI 生成 / 程序化生成
 
-    **自适应裁剪**：根据用户讲清楚的"视频类型"动态裁剪后续问题，详见 `references/question-bank.md` 的"按视频类型分流"
+    **自适应裁剪**：根据用户已确认的目的、受众、平台、素材和生产方式动态裁剪后续问题，
+    详见 `references/question-bank.md`。
 
     **方案引导**：用户知道但没说清楚 → 继续逼问；
                   用户真不知道 → 给 2-3 个方案，每个方案配画面描述 + 参考视频 + 那种感觉像什么；
@@ -339,12 +351,16 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
     - 0-1 模式：read `references/workflow-0-1.md`
     - 迭代模式：read `references/workflow-iteration.md`
 
+    [工作流身份记录]
+        输出 `video-spec.md` 时必须记录 `workflow_id`、`workflow_version`、`project_slug` 和
+        `source_film_slug`。这些字段描述路由和项目身份，不替代视频类型、生产方式或创作内容。
+
     [完成后引导]
         Spec 生成完毕后（不管是 0-1 模式还是迭代模式），告诉用户：
 
-        "projects/<film-slug>/video-spec.md 已[生成 / 更新]。
+        "projects/<project-slug>/video-spec.md 已[生成 / 更新]。
          接下来是否启动 HyperFrames 生成视频？新版本写入
-         outputs/<film-slug>/render-vNNN.mp4。"
+         outputs/<project-slug>/render-vNNN.mp4。"
 
 [References]
     按需加载，不要一次性全读：
@@ -354,16 +370,16 @@ description: 个人版视频规格编排 skill。用于在多影片项目中，�
     - `references/workflow-iteration.md`    迭代模式详细流程
     - `references/question-bank.md`         追问问题库，按 Phase 组织（每个 Phase 必读）
     - `references/scene-breakdown.md`       逐字稿 → 分镜的拆解方法论
-    - `references/components-catalog.md`    69 个组件的目录与匹配规则（选组件时必读）
+    - `references/components-catalog.md`    71 个组件的目录与匹配规则（选组件时必读）
     - `references/pacing-rules.md`          节奏 / 时长 / 转场密度规范（聊节奏时读）
     - `references/spec-rules.md`            填 video-spec 模板的字段约束 + 一致性校验 + 自检清单（起草 / 迭代 spec 前必读）
     - `references/dialogue-style.md`        对话风格范本（典型表达 / 方案引导 / 影视参考词典）
     - `references/film-research-enrichment.md` 新影片资料检索、来源分层、输出字段、字幕与失败处理（新片前置时必读）
     - `.agents/skills/aliyun-tts/SKILL.md`     阿里云 TTS 模型、音色、复刻与安全规则（涉及 AI 配音时必读）
 
-    `projects/<film-slug>/design.md` —— 用户自定义主题文件（路径基准 = 目标影片的 `video-spec.md` 所在目录）
+    `projects/<project-slug>/design.md` —— 用户自定义主题文件（路径基准 = 目标项目的 `video-spec.md` 所在目录）
 
 [启动输出]
     不输出固定的 ASCII 艺术、昵称或与当前任务无关的长篇开场白。
-    先执行 [启动检查]，确定目标影片和工作模式；再用一句自然、简短的话继续对话。
-    用户已经明确目标影片时，直接进入需求收集或修改，不重复询问已知信息。
+    先执行 [启动检查]，确定源影片、目标项目和工作模式；再用一句自然、简短的话继续对话。
+    用户已经明确目标项目和交付项目时，直接进入需求收集或修改，不重复询问已知信息。

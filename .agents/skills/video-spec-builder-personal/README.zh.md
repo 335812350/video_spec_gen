@@ -27,6 +27,7 @@ video-spec-builder-personal 就是来陪你过这一关的。启用之后,你在
 - 你东西不少,但理不出头绪。逐字稿、卖点、素材一大堆,它帮你拆成一个个镜头,排出先后和节奏。
 
 最后它把这些落成脚本。每个镜头是什么内容、用什么呈现、停几秒、怎么转到下一个,全写清楚。
+源影片素材共用 assets/<film-slug>/；每个独立交付项目使用自己的 projects/<project-slug>/ 和 outputs/<project-slug>/，并在 project.json 中用 source_film_slug 关联。
 
 它有两种用法。手上还没有脚本,它从头陪你聊一遍,产出 `video-spec.md`。已经有脚本、只想改某个地方,你直接说要改什么,它问清楚再动手,还会顺手查一下这改动会不会牵连别的镜头。
 
@@ -149,11 +150,11 @@ HyperFrames 内置了 8 套主题,报个名字就能用:
 
 预设不够味,可以自己定。HyperFrames 对自定义主题有几条硬要求,不复杂:
 
-- 主题就是一个 `design.md` 文件,放在目标影片的 `projects/<film-slug>/` 工作目录。HyperFrames 渲染时会按该影片工作目录解析它。
+- 主题就是一个 `design.md` 文件,放在目标项目的 `projects/<project-slug>/` 工作目录。HyperFrames 渲染时会按该项目工作目录解析它。
 - 文件格式是固定的。开头一段 YAML,写颜色、字体、圆角、间距、动效这些设计变量。下面用几个固定章节把设计规则讲清楚,章节是定死的:Overview、Colors、Typography、Elevation、Components、Do's and Don'ts。
-- 如果主题用到了 HyperFrames 没内置的字体,得自己把字体的 `.woff2` 文件放进目标影片工作目录的 `fonts/` 文件夹。
+- 如果主题用到了 HyperFrames 没内置的字体,得自己把字体的 `.woff2` 文件放进目标项目工作目录的 `fonts/` 文件夹。
 
-把写好的 `design.md` 放进目标影片的 `projects/<film-slug>/` 工作目录，主题就生效了。
+把写好的 `design.md` 放进目标项目的 `projects/<project-slug>/` 工作目录，主题就生效了。
 
 ### 我给你配好的一套:Spec Mono
 
@@ -173,7 +174,7 @@ HyperFrames 内置了 8 套主题,报个名字就能用:
 | `tokens.css` | 一份现成的 CSS,颜色字体间距这些变量,外加一些装饰元素的样式 |
 | `spec-mono-components.md` | 69 种组件在这套主题下的逐个细节规格 |
 
-用法:把 `spec-mono/design.md` 复制到目标影片的 `projects/<film-slug>/`,`tokens.css` 一起带上。它本来就是照 HyperFrames 的格式写的,放进去就能渲。
+用法:把 `spec-mono/design.md` 复制到目标项目的 `projects/<project-slug>/`,`tokens.css` 一起带上。它本来就是照 HyperFrames 的格式写的,放进去就能渲。
 
 > **说明:** 这里的 `design.md` tokens 和 `spec-mono-components.md` 只是精简提炼后的内容。完整的主题设计代码需要从 Claude Design 下载生成。具体的实现代码请查看 `Full Code/` 文件夹。
 
