@@ -44,9 +44,10 @@
 |---|---|
 | generic-video | 只提出主题、素材或目标，还没有确定视频类型 |
 | film-material | 基于影视正片、字幕或已有片段进行项目化编排 |
+| film-commentary | 基于完整电影或长片素材的影视解说、电影解说和影评式解说 |
 | high-energy-clip | 高能混剪、爆点剪辑、节奏强化和动作集锦 |
 
-影视解说、知识科普、产品测评、访谈切片、音乐视频和互动视频等目前尚未注册为独立工作流。使用这些方向时，系统会说明边界，并在确认后采用最接近的通用工作流回退，不会宣称它们已经原生实现。
+知识科普、产品测评、访谈切片、音乐视频和互动视频等目前尚未注册为独立工作流。使用这些方向时，系统会说明边界，并在确认后采用最接近的通用工作流回退，不会宣称它们已经原生实现。
 
 > [!WARNING]
 > 未注册的视频类型不会被自动包装成“已支持”能力。需要使用这些方向时，请先确认兼容回退方案和交付边界。
@@ -102,7 +103,11 @@ python tools/high_energy_analyzer.py analyze --help
 python tools/high_energy_analyzer.py validate --help
 ```
 
-### 3. 迭代已有规格
+### 3. 做影视解说
+
+明确说明要制作影视解说、电影解说或影评式解说时，系统会进入 film-commentary 工作流：先理解完整影片和用户的叙述视角，再生成可审阅的文稿、旁白、剪辑计划、规格和样片。配音统一使用阿里云 TTS，正式渲染前仍由用户确认文稿、音色和样片方向。
+
+### 4. 迭代已有规格
 
 如果项目中已经有 `video-spec.md`，直接描述修改目标：
 
@@ -112,7 +117,7 @@ python tools/high_energy_analyzer.py validate --help
 
 工作流会先判断影响范围，再更新受影响的规格和分镜。
 
-### 4. 预览和渲染
+### 5. 预览和渲染
 
 规格确认后，在 HyperFrames 项目目录执行：
 
@@ -185,6 +190,7 @@ TTS、字幕、转录、BGM、SFX、媒体处理、动画、关键帧、转场�
 - [当前架构图](docs/自主视频生产平台当前架构图.md)
 - [共享能力与资源目录](docs/共享能力与资源目录.md)
 - [工作流注册表](.agents/skills/video-production-dispatcher/references/workflow-registry.md)
+- [影视解说工作流](docs/film-commentary-workflow.md)
 - [video-spec-builder-personal 中文 README](.agents/skills/video-spec-builder-personal/README.zh.md)
 - [阿里云 TTS CLI](docs/aliyun/tts-cli.md)
 

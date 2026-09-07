@@ -1,0 +1,47 @@
+{
+  "workflow_id": "film-commentary",
+  "workflow_version": "1",
+  "project_slug": "nianhui-bunengting-commentary",
+  "source_film_slug": "annual-meeting",
+  "current_stage": "FINAL_RENDERED",
+  "next_action": "Technical delivery validation complete; optional independent second review remains",
+  "confirmed": {
+    "narrative_approach": "third_person_full_plot_with_ending",
+    "script_path": "projects/nianhui-bunengting-commentary/script/NARRATION_DRAFT_01.md",
+    "voice": {
+      "provider": "aliyun_tts",
+      "model": "qwen-audio-3.0-tts-plus",
+      "voice_id": "qwen-audio-3.0-tts-plus-longtongxingquan",
+      "voice_alias": "longtongxingquan",
+      "style": "male storytelling"
+    },
+    "sample_path": "projects/nianhui-bunengting-commentary/generated/voiceover/v003/qwen-audio-longtongxingquan-test.mp3",
+    "narration_path": "projects/nianhui-bunengting-commentary/generated/voiceover/v003/narration.mp3",
+    "caption_path": "projects/nianhui-bunengting-commentary/generated/voiceover/v003/narration.srt"
+  },
+  "artifacts": {
+    "index_report": "projects/nianhui-bunengting-commentary/INDEX_REPORT.md",
+    "story_map": "projects/nianhui-bunengting-commentary/STORY_MAP.md",
+    "edit_plan": "projects/nianhui-bunengting-commentary/edit-plan.md",
+    "video_spec": "projects/nianhui-bunengting-commentary/video-spec.md",
+    "latest_render": "outputs/nianhui-bunengting-commentary/render-v003.mp4",
+    "second_review": null,
+    "hyperframes": "projects/nianhui-bunengting-commentary/hyperframes/",
+    "render_qa": "projects/nianhui-bunengting-commentary/RENDER_QA.md"
+  },
+  "source_constraints": {
+    "video": "assets/annual-meeting/media/年会不能停！.mp4",
+    "analysis": [
+      "assets/annual-meeting/analysis/plot-segmentation.json",
+      "assets/annual-meeting/analysis/shot-refine.json"
+    ],
+    "ignore_glob": "assets/annual-meeting/analysis/high-energy*.json",
+    "legacy_project_excluded": "projects/annual-meeting-commentary/"
+  },
+  "user_confirmed": {
+    "script": true,
+    "voice": true,
+    "sample": true
+  },
+  "updated_at": "2026-09-04"
+}

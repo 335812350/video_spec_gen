@@ -53,6 +53,26 @@
 
 - README 保持简洁；详细说明放入现有 `docs/` 或对应影片的 `projects/<project-slug>/`。
 - 重大用户可感知改动同步更新相关文档。
+- `docs/项目进展.md` 是项目状态的唯一汇总入口；新增或完成工作流、Skill、工具、项目、渲染版本、测试或架构能力时，必须在同一轮同步更新，不得等后续再补。
+- 更新 `docs/项目进展.md` 的“已完成”时，必须写明完成日期或日期范围，并以 Git 提交日期、项目状态、QA 记录、测试结果或实际产物作为依据；未验证的内容只能放在“进行中”或“待完成”。
+- 涉及平台边界、工作流注册、共享能力或执行层的改动，必须联动检查并按需同步：`docs/Agent驱动的自主视频生产平台总设计.md`、`docs/自主视频生产平台当前架构图.md`、`docs/共享能力与资源目录.md`、`.agents/skills/video-production-dispatcher/references/workflow-registry.md`。
+- 新增或删除 Skill / 工作流 / 能力时，同时更新其权威文档、注册表、共享能力目录、项目进展和相关测试；不得只创建目录或修改 `SKILL.md` 就宣称能力已完成。
+- 重命名、移动或删除文档后，必须使用 `rg` 检查仓库内旧路径和旧文件名引用，并同步修复 Markdown 链接、README、测试和交叉引用。
+- 每次任务结束前执行一次文档一致性检查：确认项目进展中的完成状态与实际文件、状态记录、QA、输出版本和测试结果一致；发现过期描述时在同一轮修正。
+- 本项目的 HyperFrames / 视频工作流 Skill 以仓库内 `.agents/skills/` 和根目录 `skills-lock.json` 为权威来源；修改或更新项目 Skill 时直接维护该目录并同步锁文件、文档和测试。`C:\Users\chenyinghong\.codex\skills` 只是 Codex 全局 Skill 目录，不得当作本项目 Skill 的依赖路径。
+- HyperFrames CLI 的 `skills update` 是全局 Skill 安装/更新机制，不等同于更新本项目 `.agents/skills/`；如需执行全局更新，必须明确目标是 Codex 全局目录，并将其结果与项目本地 Skill 状态分开记录。
+- 更新本项目已锁定的上游 HyperFrames Skill 时，必须在仓库根目录运行 `npx --yes skills@latest update --project --yes`；它更新 `skills-lock.json` 管理的项目级 Skill，不得在项目更新时附加 `--global`。更新前保留当前工作区改动，更新后必须检查 `.agents/skills/` 与 `skills-lock.json` 的 diff，保留本项目定制内容，并运行相关测试和文档一致性检查。
 - 当前项目暂不使用 `console/` 文件夹；处理其他功能时默认忽略其中的代码、依赖和生成内容，除非用户明确要求修改 `console/` 。
 - 本地验收时不要关闭用户已有的浏览器窗口或标签页。
 - 反复出现的问题沉淀为本文件中的明确规则。
+
+## HyperFrames 临时目录
+
+- HyperFrames 项目的源码、配置和最终交付物仍放在项目目录或命令的 `--output` 指定位置；本节只约束渲染过程使用的系统临时目录。
+- 执行 `npx hyperframes render`、`preview`、`snapshot` 或其他可能产生大量临时文件的命令时，优先将当前命令进程的 `TEMP` 和 `TMP` 设置为 `E:\Temp`，以减少 Chrome、FFmpeg 等子进程把临时文件写入系统盘。
+- 必须在同一个 PowerShell 调用中设置环境变量并执行命令，例如：
+  `$env:TEMP='E:\Temp'; $env:TMP='E:\Temp'; npx hyperframes render ...`
+- 只修改当前进程及其子进程的环境变量，不修改 Windows 用户级或系统级环境变量。命令结束后不会永久改变系统配置。
+- `E:\Temp` 必须提前存在且可写；如果不可用，应停止并提示用户，不要自动创建目录，也不要把环境变量改回系统默认值后继续渲染。
+- 该设置只影响遵循 `TEMP`/`TMP` 的临时文件位置，不保证改变 npm/npx 缓存、HyperFrames 用户缓存、浏览器缓存或 Codex 插件缓存的位置；这些缓存仍可能位于 C 盘。
+- 最终输出路径仍由项目的 `--output`、项目脚本或项目目录约定决定，不由 `TEMP`/`TMP` 决定。

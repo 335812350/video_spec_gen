@@ -79,3 +79,14 @@ launch-video pipeline, captions are an overlay you add, not a zone you reserve:
 - Make the rail (or the small overlay caption line) carry the verbatim words.
 - Promote a word to an embed only at a genuine peak — scarce, spaced, never two at once.
 - Reserve nothing; judge legibility of captions-over-content visually, not by a keep-out gate.
+
+
+## Film-commentary visual protection
+
+When this doctrine is used by the film-commentary workflow, captions and titles remain overlays, but the underlying film must stay visually intact. The following rules override decorative defaults that would dim or obscure the footage:
+
+- Allowed: transparent text, 1--2px glyph stroke, and a small local translucent plate sized to the current title/caption block.
+- Forbidden: box-shadow, text-shadow, filter: drop-shadow(), filter: blur(), backdrop-filter, glow, vignette, full-frame scrim, wide bottom band, full-frame gradient, or any persistent layer that darkens, tints, softens, or otherwise grades the film.
+- A local plate must hug the text, use rgba(...) only as needed for readability, and never become a scene-wide or frame-wide treatment.
+- Keep text overlays out of faces, key actions, important props, and source subtitles when those areas carry evidence. Overlays use pointer-events: none by default.
+- Direct crossfade or wipe between source film clips is allowed; adding a black, gradient, shadow, or frosted layer on top of the clips is not.

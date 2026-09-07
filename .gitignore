@@ -10,6 +10,7 @@ projects/**/generated/
 projects/**/hyperframes/assets/
 projects/**/snapshots/
 projects/**/.thumbnails/
+projects/**/.waveform-cache/
 *.mp4
 *.mov
 *.mkv

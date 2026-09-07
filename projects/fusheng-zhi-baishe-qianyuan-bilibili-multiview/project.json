@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "id": "fusheng-zhi-baishe-qianyuan-bilibili-multiview",
+  "project_slug": "fusheng-zhi-baishe-qianyuan-bilibili-multiview",
+  "title": "白蛇为何仍在被重写：浮生之白蛇前缘多视角文化解读",
+  "source_film_slug": "fusheng-zhi-baishe-qianyuan",
+  "workflow_id": "generic-video",
+  "workflow_version": "1",
+  "video_type": "film-commentary",
+  "production_mode": "hybrid",
+  "variant_id": null
+}

@@ -1,0 +1,50 @@
+{
+  "project_slug": "nianhui-bunengting-commentary",
+  "source_film_slug": "annual-meeting",
+  "title": "《年会不能停！》完整剧情解说",
+  "workflow_id": "film-commentary",
+  "workflow_version": "1",
+  "video_type": "commentary",
+  "production_mode": "script-led",
+  "variant_id": "v001",
+  "language": "zh-CN",
+  "duration_seconds": { "min": 600, "target": 670, "max": 1200 },
+  "narration": {
+    "perspective": "third_person",
+    "voice_gender": "male",
+    "voice_style": "storytelling, warm, restrained humor",
+    "delivery": "clear Mandarin, medium pace, cinematic pauses",
+    "provider": "aliyun_tts",
+    "model": "qwen-audio-3.0-tts-plus",
+    "voice_id": "qwen-audio-3.0-tts-plus-longtongxingquan",
+    "voice_alias": "longtongxingquan",
+    "voice_status": "confirmed"
+  },
+  "spoilers": "full_plot_and_ending",
+  "platform": "unconfirmed",
+  "format": {
+    "aspect_ratio": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "source_aspect_ratio": "1920x800 (2.40:1)",
+    "source_fps": 24
+  },
+  "source": {
+    "video": "E:/pyproject/video_spec_gen/assets/annual-meeting/media/年会不能停！.mp4",
+    "duration_seconds": 7024.872472,
+    "size_bytes": 1156751409,
+    "analysis": [
+      "E:/pyproject/video_spec_gen/assets/annual-meeting/analysis/plot-segmentation.json",
+      "E:/pyproject/video_spec_gen/assets/annual-meeting/analysis/shot-refine.json"
+    ],
+    "ignored_analysis": "E:/pyproject/video_spec_gen/assets/annual-meeting/analysis/high-energy*.json"
+  },
+  "artifacts": {
+    "index_report": "projects/nianhui-bunengting-commentary/INDEX_REPORT.md",
+    "story_map": "projects/nianhui-bunengting-commentary/STORY_MAP.md",
+    "pov_brief": "projects/nianhui-bunengting-commentary/POV_BRIEF.md",
+    "script_draft": "projects/nianhui-bunengting-commentary/script/NARRATION_DRAFT_01.md",
+    "video_spec": "projects/nianhui-bunengting-commentary/video-spec.md"
+  }
+}

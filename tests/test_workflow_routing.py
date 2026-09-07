@@ -13,8 +13,10 @@ LAYOUT = ROOT / ".agents" / "skills" / "video-spec-builder-personal" / "referenc
 
 
 class WorkflowRoutingTests(unittest.TestCase):
-    def test_registry_covers_explicit_high_energy_and_generic_fallback(self):
+    def test_registry_covers_commentary_high_energy_and_generic_fallback(self):
         registry = REGISTRY.read_text(encoding="utf-8")
+        self.assertIn("film-commentary", registry)
+        self.assertIn(".agents/skills/movie-master-director/SKILL.md", registry)
 
         self.assertIn("`high-energy-clip`", registry)
         self.assertIn("`generic-video`", registry)
@@ -30,6 +32,15 @@ class WorkflowRoutingTests(unittest.TestCase):
         self.assertRegex(dispatcher, r"未注册.*(?:说明|回退|确认)|(?:说明|回退|确认).*未注册")
         self.assertIn("一条主生产工作流", dispatcher)
         self.assertIn("production_mode", dispatcher)
+
+    def test_dispatcher_routes_explicit_film_commentary_requests(self):
+        dispatcher = DISPATCHER.read_text(encoding="utf-8")
+
+        for phrase in ("影视解说", "电影解说", "影评式解说"):
+            self.assertIn(phrase, dispatcher)
+        self.assertIn("workflow_id: film-commentary", dispatcher)
+        self.assertIn("production_mode: script-led", dispatcher)
+
 
     def test_personal_workflow_keeps_direct_call_compatibility(self):
         personal = PERSONAL.read_text(encoding="utf-8")

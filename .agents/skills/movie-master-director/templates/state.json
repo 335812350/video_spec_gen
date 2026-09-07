@@ -1,0 +1,22 @@
+{
+  "workflow_id": "film-commentary",
+  "workflow_version": "1",
+  "project_slug": "replace-with-project-slug",
+  "source_film_slug": "replace-with-film-slug",
+  "current_stage": "PROJECT_CONFIRMED",
+  "next_action": "Build or verify the reusable film index.",
+  "confirmed": {
+    "narrative_approach": null,
+    "script_path": null,
+    "voice": null,
+    "sample_path": null
+  },
+  "artifacts": {
+    "index_report": null,
+    "story_map": null,
+    "edit_plan": null,
+    "video_spec": null,
+    "latest_render": null,
+    "second_review": null
+  }
+}
