@@ -15,7 +15,6 @@ assets/       源影片输入边界，按 assets/<film-slug>/ 组织
 projects/     独立交付项目，按 projects/<project-slug>/ 组织
 outputs/      渲染输出，按 outputs/<project-slug>/ 组织并递增版本
 .codex-tmp/   当前任务的临时文件，按 project-slug 分目录，任务结束后清理
-video-spec.md 视频规格
 setup.*       初始化脚本
 doctor.*      环境检查脚本
 ```

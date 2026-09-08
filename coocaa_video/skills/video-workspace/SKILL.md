@@ -31,7 +31,6 @@ description: 在当前空文件夹初始化可复用的本地视频创作工作�
    - `setup.ps1` / `setup.sh`
    - `doctor.ps1` / `doctor.sh`
    - `.env.example`
-   - `video-spec.md`
    - `assets/README.md`
 - `projects/README.md`
 - `outputs/README.md`

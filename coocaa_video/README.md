@@ -92,7 +92,6 @@ assets/       按源影片或主题划分：assets/<film-slug>/，研究资料�
 projects/     按交付项目划分：projects/<project-slug>/，保存 video-spec.md、edit-plan.md、project.json 和 hyperframes/
 outputs/      按交付项目划分：outputs/<project-slug>/，保存 render-v001.mp4、render-v002.mp4 等版本
 .codex-tmp/   当前任务临时文件，按 project-slug 分目录，任务结束后清理
-video-spec.md 视频规格模板
 setup.*       初始化脚本
 doctor.*      环境检查脚本
 ```
