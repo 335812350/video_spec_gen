@@ -8,5 +8,6 @@
   "workflow_version": "1",
   "video_type": "film-commentary",
   "production_mode": "hybrid",
-  "variant_id": null
+  "variant_id": null,
+  "composition_path": "hyperframes/"
 }

@@ -2,7 +2,7 @@
 
 **English** · [中文](README.zh.md)
 
-# video-spec-builder-personal
+# video-spec-director-dev
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen)](LICENSE) ![Agent Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet) [![skills.sh Compatible](https://img.shields.io/badge/skills.sh-Compatible-brightgreen)](https://skills.sh)
 
@@ -12,7 +12,7 @@ I built this skill after realizing the hard part of making a video isn't the ren
 
 You've got a vague idea in your head: a product video, a short for social, a company intro. But it's fuzzy. The moment you try to build it, the details get you — how long each shot runs, what's on screen, what comes first and what comes later. You probably haven't pinned them all down, and you might not even be able to put them into words.
 
-video-spec-builder-personal gets you through that part. Once enabled, tell your AI "I want to make a video" inside Codex or Claude Code, and it takes over the conversation. It listens to your brief the way a director would, then keeps asking: Who's this for? How long? What's the one line people should walk away with? Which shot carries the weight? Anywhere you go vague, or skip something, it stops and pushes you to fill it in.
+video-spec-director-dev gets you through that part. Once enabled, tell your AI "I want to make a video" inside Codex or Claude Code, and it takes over the conversation. It listens to your brief the way a director would, then keeps asking: Who's this for? How long? What's the one line people should walk away with? Which shot carries the weight? Anywhere you go vague, or skip something, it stops and pushes you to fill it in.
 
 A few rounds of that, and the fuzzy idea becomes a `video-spec.md`: a shot-by-shot script, timed to the second, every shot written out. Hand that to HyperFrames and it renders into a real video.
 
@@ -32,14 +32,14 @@ There are two ways to use it. With no script yet, it talks you through the whole
 
 ## The workflow
 
-It's two skills working in sequence. video-spec-builder-personal sits upstream and turns your idea into a script. HyperFrames sits downstream and turns the script into video.
+It's two skills working in sequence. video-spec-director-dev sits upstream and turns your idea into a script. HyperFrames sits downstream and turns the script into video.
 
 ```
        You: "I want to make a video"
                 │
                 ▼
    ┌────────────────────────┐
-   │ video-spec-builder-personal │ asks, breaks it into shots
+   │ video-spec-director-dev │ asks, breaks it into shots
    └────────────────────────┘
                 │
                 ▼
@@ -60,7 +60,7 @@ Before you start, make sure HyperFrames is installed; this personal skill is loa
 
 I mostly use this skill in **Codex**, and after that **Claude Code**. Those are the two setups it works best in.
 
-This personal skill is already included in the current project at `.agents/skills/video-spec-builder-personal/`. Only make sure HyperFrames (the renderer, downstream) is installed:
+This personal skill is already included in the current project at `.agents/skills/video-spec-director-dev/`. Only make sure HyperFrames (the renderer, downstream) is installed:
 
 ```bash
 npx skills add heygen-com/hyperframes
@@ -101,7 +101,7 @@ Once the script is final, hand it to HyperFrames:
 /hyperframes
 ```
 
-> In Claude Code, besides triggering it by talking, you can also call it directly with `/video-spec-builder-personal`.
+> In Claude Code, besides triggering it by talking, you can also call it directly with `/video-spec-director-dev`.
 
 ## What HyperFrames can and can't do
 
@@ -179,7 +179,7 @@ To use it, copy `spec-mono/design.md` into `projects/<project-slug>/` and bring 
 ## What's in this repo
 
 ```
-video-spec-builder-personal/
+video-spec-director-dev/
 ├── SKILL.md                  the skill's main file — the AI reads this first
 ├── README.md                 English
 ├── README.zh.md              中文

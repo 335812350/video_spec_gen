@@ -1,5 +1,5 @@
 ---
-name: video-spec-builder-personal
+name: video-spec-director-dev
 description: Use when 用户需要从视频想法、素材或已有规格编排通用分镜和 video-spec，且没有匹配的独立视频类型工作流。
 ---
 

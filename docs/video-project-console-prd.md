@@ -165,7 +165,7 @@ The former `projects/annual-meeting/high-energy-90s/` directory has been normali
   "updated_at": "2026-08-30T12:20:00+08:00",
   "status": "ready",
   "active_run_id": "run-20260830-120000",
-  "skills": ["video-spec-builder-personal", "hyperframes"],
+  "skills": ["video-spec-director-dev", "hyperframes"],
   "assets": [],
   "storyboard_path": "storyboard.json",
   "spec_path": "video-spec.md",

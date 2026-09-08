@@ -46,24 +46,26 @@ class FilmCommentaryWorkflowTests(unittest.TestCase):
         self.assertIn("8 个或少量连续 HyperFrames clip", direct)
         self.assertIn("正式 video-spec.md", direct)
 
-    def test_film_commentary_overlay_rules_protect_the_film(self):
+    def test_film_commentary_uses_upstream_caption_overlay_rules(self):
         master = (SKILLS_ROOT / "movie-master-director" / "SKILL.md").read_text(encoding="utf-8")
         direct = (SKILLS_ROOT / "movie-direct" / "SKILL.md").read_text(encoding="utf-8")
         captions = (SKILLS_ROOT / "captions-overlay" / "SKILL.md").read_text(encoding="utf-8")
         rail = (SKILLS_ROOT / "embedded-captions" / "references" / "rail.md").read_text(encoding="utf-8")
         render_qa = (SKILLS_ROOT / "movie-render-qa" / "SKILL.md").read_text(encoding="utf-8")
 
-        for text in (master, captions, rail, render_qa):
+        for text in (master, render_qa):
             self.assertIn("text-shadow", text)
             self.assertIn("box-shadow", text)
 
         self.assertIn("阴影", direct)
         self.assertIn("模糊", direct)
 
-        self.assertIn("rgba(...)", captions)
-        self.assertIn("1--2px glyph stroke", captions)
+        self.assertIn("NOT a reserved zone", captions)
+        self.assertIn("drop / rail / embed", captions)
+        self.assertNotIn("Film-commentary visual protection", captions)
         self.assertIn("影片覆盖层静态与视觉检查", render_qa)
         self.assertIn("Motion is minimal", rail)
+        self.assertIn("drop-shadow", rail)
 
     def test_render_qa_has_pre_render_blocking_gate(self):
         render_qa = (SKILLS_ROOT / "movie-render-qa" / "SKILL.md").read_text(encoding="utf-8")

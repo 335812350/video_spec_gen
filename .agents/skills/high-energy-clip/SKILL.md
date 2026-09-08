@@ -28,7 +28,7 @@ production_mode: asset-led
 
 1. 由调度层传入 `workflow_id: high-energy-clip`；直接调用本 Skill 时也按该工作流记录。
 2. 完成通用影片素材工作流的影片锁定；新影片先执行
-   `../video-spec-builder-personal/references/film-research-enrichment.md`。
+   `../video-spec-director-dev/references/film-research-enrichment.md`。
 3. 确认正片源文件位于 `assets/<film-slug>/`，保留用户原始路径。
 4. 前期不把时长当作硬输入。用户给出的“约 xx 秒”只记录为 `duration_hint` 或软范围；如果用户没有时长偏好，记录为 `content-driven`。
 5. 先读取已有 `assets/<film-slug>/analysis/`；没有候选分析时，先做不绑定目标时长的内容分析：
@@ -140,10 +140,10 @@ HyperFrames 组装时，画面使用带 `data-media-start` 的静音 `<video>`�
 
 ## 公共契约
 
-- 使用 `../video-spec-builder-personal/references/project-layout.md` 解析
+- 使用 `../video-spec-director-dev/references/project-layout.md` 解析
   `assets/<film-slug>/`、`projects/<project-slug>/` 和 `outputs/<project-slug>/` 边界。
-- 使用 `../video-spec-builder-personal/templates/video-spec-template.md` 输出统一规格，至少记录
+- 使用 `../video-spec-director-dev/templates/video-spec-template.md` 输出统一规格，至少记录
   `workflow_id`、`workflow_version`、`video_type`、`production_mode`、`project_slug` 和
   `source_film_slug`。
-- 使用 `../video-spec-builder-personal/references/spec-rules.md` 执行公共规格自检；本 Skill 的高能规则优先补充，不能被通用规则覆盖。
-- 本 Skill 是独立主生产工作流，不作为 `video-spec-builder-personal` 的内部类型模块展示。
+- 使用 `../video-spec-director-dev/references/spec-rules.md` 执行公共规格自检；本 Skill 的高能规则优先补充，不能被通用规则覆盖。
+- 本 Skill 是独立主生产工作流，不作为 `video-spec-director-dev` 的内部类型模块展示。

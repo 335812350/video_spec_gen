@@ -36,8 +36,12 @@ with only the climax(es) promoted to embed. Rail is not a fallback — it's the 
 
 - **Size: ~`calc(0.045 * var(--h))`** (≈48px @1080, ≈58px @1290) — readable, _not_ hero. The rail is a subtitle; it is deliberately much smaller than the embed body/climax. Express as a `var(--h)` fraction (never hardcode px) so it scales across resolutions. The embed climax is sized to the frame independently (see composition-craft § POP) — **never** size the climax as a multiple of this rail.
 - One clean sans (Inter / Helvetica Now / Neue Haas), weight 500–600; white (or near-white).
-- **Legibility without grading the video:** keep the film untouched. Use transparent text with a 1--2px glyph stroke, or a subtle local rgba(...) plate **sized to the text box**. Never use text-shadow, box-shadow, drop-shadow, blur, glow, a full-frame bar, or a frame-wide grade. The local plate may remain only for the caption window and must not become a persistent band.
-- Motion is minimal: 150–250ms fade-up in / fade-down out. No glitch, no scale-pop, no per-word choreography on the rail — that energy is reserved for embed.
+- **Legibility without grading the video:** a tight text treatment local to the glyphs only —
+  a soft dark drop-shadow, or a subtle rounded gradient pill / 30–40% scrim **sized to the text
+  box** (not a full-frame bar, never a frame-wide grade). On luminance > 180 backgrounds, keep
+  the scrim; never rely on bare light text.
+- Motion is minimal: 150–250ms fade-up in / fade-down out. No glitch, no scale-pop, no per-word
+  choreography on the rail — that energy is reserved for embed.
 
 ## The `emphasis` flag (active-word highlight)
 

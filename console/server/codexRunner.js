@@ -69,7 +69,7 @@ export class CodexRunner extends EventEmitter {
   }
 
   buildPrompt(projectId, run, input, resume) {
-    return [`You are operating the Video Project Console project ${projectId}.`, `Work only inside the project workspace and approved repository roots.`, `Read the configured skills under .agents/skills, especially video-spec-builder-personal and hyperframes.`, `Project manifest: ${path.join(this.projects.projectPath(projectId), 'project.json')}.`, `Run directory: ${this.runStore.runRoot(projectId, run.id)}.`, resume ? `Resume from checkpoint: ${JSON.stringify(run.checkpoint || run.resume_from || {})}` : '', `User request:\n${input || run.input || 'Continue the video engineering workflow.'}`, 'Emit concise progress and artifact information as JSONL when possible.'].filter(Boolean).join('\n\n');
+    return [`You are operating the Video Project Console project ${projectId}.`, `Work only inside the project workspace and approved repository roots.`, `Read the configured skills under .agents/skills, especially video-spec-director-dev and hyperframes.`, `Project manifest: ${path.join(this.projects.projectPath(projectId), 'project.json')}.`, `Run directory: ${this.runStore.runRoot(projectId, run.id)}.`, resume ? `Resume from checkpoint: ${JSON.stringify(run.checkpoint || run.resume_from || {})}` : '', `User request:\n${input || run.input || 'Continue the video engineering workflow.'}`, 'Emit concise progress and artifact information as JSONL when possible.'].filter(Boolean).join('\n\n');
   }
 
   async handleJsonLine(projectId, runId, line) {

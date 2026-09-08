@@ -43,7 +43,7 @@
 - 逐镜审片：为两条预告建立可用片段表、source_in/source_out 和台词/环境声状态。
 - 文化模块图像：优先下载可用的官方页面图或公开许可图像，并把 URL、授权信息、下载日期写进 assets/fusheng-zhi-baishe-qianyuan/references/。
 - BGM：选择可商用或平台允许使用的东方氛围乐；不得直接沿用预告原声。
-- 旁白：已完成脚本，生成前查询当前账号可用的阿里云 TTS 模型和音色；不在规格中虚构 voice ID。
+- 旁白：已锁定阿里云 qwen-audio-3.0-tts-plus 与基础音色表中的 qwen-audio-3.0-tts-plus-longhuiyanxing（龙辉焰杏，沉稳解说音，有声阅读）；试听文件为 projects/fusheng-zhi-baishe-qianyuan-bilibili-multiview/audio/auditions/longhuiyanxing-documentary.mp3。
 
 ## 素材使用边界
 
@@ -60,6 +60,6 @@
 
 ## 开放问题
 
-1. 阿里云 TTS 的最终模型与 voice ID 待查询/试听后写入运行记录。
+1. 完整 culture/adaptation 旁白待按已锁定音色合成，并依据实际音频时长回调镜头停连。
 2. 预告镜头的精确 source 时间码待人工审片。
 3. 文化图像与 BGM 的最终下载文件、授权页和署名格式待补齐。

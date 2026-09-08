@@ -8,8 +8,8 @@
 
 | workflow_id | 状态 | 适用场景 | 当前实现 / 版本 | 路由说明 |
 |---|---|---|---|---|
-| `generic-video` | `active`（过渡） | 用户只提出主题、素材或目标，但没有明确视频类型 | 复用 `video-spec-builder-personal` 的通用 0-1 分支（v1） | 默认回退；工作流身份仍应记录为 `generic-video` |
-| `film-material` | `active` | 基于影视正片、影片素材、字幕或已有片段进行项目化编排 | `.agents/skills/video-spec-builder-personal/`（v1） | `video-spec-builder-personal` 的正式工作流身份 |
+| `generic-video` | `active`（过渡） | 用户只提出主题、素材或目标，但没有明确视频类型 | 复用 `video-spec-director-dev` 的通用 0-1 分支（v1） | 默认回退；工作流身份仍应记录为 `generic-video` |
+| `film-material` | `active` | 基于影视正片、影片素材、字幕或已有片段进行项目化编排 | `.agents/skills/video-spec-director-dev/`（v1） | `video-spec-director-dev` 的正式工作流身份 |
 | `film-commentary` | `active` | 基于完整电影或长片素材制作有旁白的影视解说、电影解说或影评式解说 | `.agents/skills/movie-master-director/SKILL.md`（v1） | 独立主生产工作流；使用同一总导演按阶段调用索引、执笔、配音、编导、渲染和复检能力 |
 | `high-energy-clip` | `active` | 明确要求高能混剪、爆点剪辑、节奏强化或动作片段集锦 | `.agents/skills/high-energy-clip/SKILL.md`（v2） | 独立主生产工作流；不再作为 personal 的内部类型模块 |
 
