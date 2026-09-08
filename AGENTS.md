@@ -59,6 +59,7 @@
 - 新增或删除 Skill / 工作流 / 能力时，同时更新其权威文档、注册表、共享能力目录、项目进展和相关测试；不得只创建目录或修改 `SKILL.md` 就宣称能力已完成。
 - 重命名、移动或删除文档后，必须使用 `rg` 检查仓库内旧路径和旧文件名引用，并同步修复 Markdown 链接、README、测试和交叉引用。
 - 每次任务结束前执行一次文档一致性检查：确认项目进展中的完成状态与实际文件、状态记录、QA、输出版本和测试结果一致；发现过期描述时在同一轮修正。
+- 若项目级更新因历史 skills-lock.json 路径与 .agents/skills 不一致而失败，不得转为全局更新；先备份，再从明确的上游提交下载到 E:\Temp，仅覆盖锁定的 HyperFrames Skill，并重建这些条目的项目路径与内容哈希。
 - 本项目的 HyperFrames / 视频工作流 Skill 以仓库内 `.agents/skills/` 和根目录 `skills-lock.json` 为权威来源；修改或更新项目 Skill 时直接维护该目录并同步锁文件、文档和测试。`C:\Users\chenyinghong\.codex\skills` 只是 Codex 全局 Skill 目录，不得当作本项目 Skill 的依赖路径。
 - HyperFrames CLI 的 `skills update` 是全局 Skill 安装/更新机制，不等同于更新本项目 `.agents/skills/`；如需执行全局更新，必须明确目标是 Codex 全局目录，并将其结果与项目本地 Skill 状态分开记录。
 - 更新本项目已锁定的上游 HyperFrames Skill 时，必须在仓库根目录运行 `npx --yes skills@latest update --project --yes`；它更新 `skills-lock.json` 管理的项目级 Skill，不得在项目更新时附加 `--global`。更新前保留当前工作区改动，更新后必须检查 `.agents/skills/` 与 `skills-lock.json` 的 diff，保留本项目定制内容，并运行相关测试和文档一致性检查。

@@ -49,7 +49,7 @@ outputs/<project-slug>/             递增的 render-vNNN.mp4
 - 配音：只使用 `tools/aliyun_tts.py` 和 `.agents/skills/aliyun-tts/`。
 - 旁白时间戳：缺少可用时间信息时使用 `npx hyperframes transcribe`，并抽查中文专名与关键句。
 - 渲染：HyperFrames `check`、受控 preview、render 和渲染后媒体检查。
-- 影片研究：复用 `video-spec-builder-personal` 的研究资料流程，研究记录写入 `assets/<film-slug>/references/`。
+- 影片研究：复用 `video-spec-director-dev` 的研究资料流程，研究记录写入 `assets/<film-slug>/references/`。
 
 ## 上游来源与适配说明
 

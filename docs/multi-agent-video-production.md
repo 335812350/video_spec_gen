@@ -47,45 +47,45 @@
 - **历史基线 / 后续实现参考**：[`console/server/codexRunner.js`](../console/server/codexRunner.js) 曾以每次运行只启动一个 `codex exec --json` 进程为基础。当前项目暂不把 `console/` 作为主架构，后续如恢复控制台实现，应重新对照总设计和本方案的批次运行模型。
 - **历史基线 / 后续实现参考**：控制台的 run 记录、进程 ID 和项目锁曾以单一父运行为中心，没有子任务 ID、子任务状态或并发合并协议。当前项目不把 `console/` 视为主架构。
 - HyperFrames 技能已经定义了 frame worker、DISPATCH、WAIT、重派和无委托时的串行回退。
-- `video-spec-builder-personal` 强调用户需求确认、事实分层和 spec 一致性，但没有独立的文案 worker 或 spec QA worker。
+- `video-spec-director-dev` 强调用户需求确认、事实分层和 spec 一致性，但没有独立的文案 worker 或 spec QA worker。
 - 项目级锁意味着多个 worker 不能直接同时修改同一份权威 `video-spec.md`。
 
 因此，下一步不是重写现有 HyperFrames worker，而是在其上游增加批量任务模型和受控合并层。
 
 ## 2.5 当前主要链路
 
-结论：`video-spec-builder-personal` 是第二层的一条影片素材驱动生产工作流，负责把想法整理成逐镜头的 `video-spec.md`；HyperFrames 是下游执行与渲染层。平台调度层应先选择该工作流或其他已注册工作流，再进入本方案的批量编排。README 也明确描述为两个 skill 接力。[README.zh.md:35](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/README.zh.md:35)
+结论：`video-spec-director-dev` 是第二层的一条影片素材驱动生产工作流，负责把想法整理成逐镜头的 `video-spec.md`；HyperFrames 是下游执行与渲染层。平台调度层应先选择该工作流或其他已注册工作流，再进入本方案的批量编排。README 也明确描述为两个 skill 接力。[README.zh.md:35](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/README.zh.md:35)
 
 主要链路：
 
 1. **锁定影片与工作模式**  
-   根据片名、`film-slug`、`project-slug` 或路径确定目标：共享素材读取对应的 `assets/<film-slug>/`，项目文件读取对应的 `projects/<project-slug>/`。[SKILL.md:28](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:28)
+   根据片名、`film-slug`、`project-slug` 或路径确定目标：共享素材读取对应的 `assets/<film-slug>/`，项目文件读取对应的 `projects/<project-slug>/`。[SKILL.md:28](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/SKILL.md:28)
    同一影片但视频类型、平台、时长或剪辑目标不同，应创建新的顶层 `project-slug`；`variant_id` 只用于批次候选和实验追踪。
 
 2. **新影片先做资料补全**  
-   新片必须先本地盘点，再做可追溯的联网检索；把来源状态和影片资料写入 `assets/<film-slug>/references/`，至少生成 `film-metadata.json`、`film-profile.md`、`story-context.md`。[SKILL.md:6](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:6)
+   新片必须先本地盘点，再做可追溯的联网检索；把来源状态和影片资料写入 `assets/<film-slug>/references/`，至少生成 `film-metadata.json`、`film-profile.md`、`story-context.md`。[SKILL.md:6](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/SKILL.md:6)
 
 3. **分支处理**
    - 没有现有 spec：走 **0-1 模式**
-   - 已有 `video-spec.md` 且要修改：走 **迭代模式**[SKILL.md:23](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:23)
+   - 已有 `video-spec.md` 且要修改：走 **迭代模式**[SKILL.md:23](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/SKILL.md:23)
 
 4. **0-1 模式五段流程**  
-   视频基本盘 → 素材盘点 → 表达方式与节奏 → 视觉主题 → 参考与反例。每段都有硬指标，未满足就继续追问，不允许直接生成半成品。[workflow-0-1.md:12](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/references/workflow-0-1.md:12)
+   视频基本盘 → 素材盘点 → 表达方式与节奏 → 视觉主题 → 参考与反例。每段都有硬指标，未满足就继续追问，不允许直接生成半成品。[workflow-0-1.md:12](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/references/workflow-0-1.md:12)
 
 5. **拆分镜并校验**  
-   按 `scene-breakdown` 拆到单镜头，每个 Scene 必须使用组件目录中的真实组件 ID，然后自检。[workflow-0-1.md:207](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/references/workflow-0-1.md:207)
+   按 `scene-breakdown` 拆到单镜头，每个 Scene 必须使用组件目录中的真实组件 ID，然后自检。[workflow-0-1.md:207](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/references/workflow-0-1.md:207)
 
 6. **生成或更新 spec**  
    按模板和 `spec-rules` 写入或更新  
-   `projects/<project-slug>/video-spec.md`，时长精确到 0.1 秒，缺失内容标 `[待补充]`。[workflow-0-1.md:220](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/references/workflow-0-1.md:220)
+   `projects/<project-slug>/video-spec.md`，时长精确到 0.1 秒，缺失内容标 `[待补充]`。[workflow-0-1.md:220](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/references/workflow-0-1.md:220)
 
 7. **交给 HyperFrames**  
-   spec 完成后先通过确定性检查和独立只读审核，再提示用户是否执行 `/hyperframes`；新渲染版本写入 `outputs/<project-slug>/render-vNNN.mp4`，不会自动判断最终版。[SKILL.md:339](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/SKILL.md:339)
+   spec 完成后先通过确定性检查和独立只读审核，再提示用户是否执行 `/hyperframes`；新渲染版本写入 `outputs/<project-slug>/render-vNNN.mp4`，不会自动判断最终版。[SKILL.md:339](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/SKILL.md:339)
 
 关于“是否有启动 agent”：
 
 - **Skill 本身没有启动 agent。** 文档中没有 `spawn_agent`、`subagent`、启动脚本或 agent 编排配置。
-- 它运行在当前的 Codex/Claude 等宿主 agent 中；`project-layout.md` 中“agent 可以写入 reference”只是权限说明，不是创建子 agent。[project-layout.md:19](E:/pyproject/video_spec_gen/.agents/skills/video-spec-builder-personal/references/project-layout.md:19)
+- 它运行在当前的 Codex/Claude 等宿主 agent 中；`project-layout.md` 中“agent 可以写入 reference”只是权限说明，不是创建子 agent。[project-layout.md:19](E:/pyproject/video_spec_gen/.agents/skills/video-spec-director-dev/references/project-layout.md:19)
 - 联网搜索、HyperFrames 渲染是工具/下游流程，不等于启动子 agent。
 
 ## 3. 推荐架构

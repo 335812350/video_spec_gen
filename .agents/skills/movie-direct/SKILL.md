@@ -11,7 +11,7 @@ description: Use when a film commentary project needs script review, scene selec
 
 1. 读取项目状态、INDEX_REPORT.md、STORY_MAP.md、旁白稿、旁白音频和用户已确认的叙述视角。
 2. 确认旁白、基本时长、平台画幅、素材边界和声音方向已明确；未明确时退回总导演继续探索，不生成正式 spec。
-3. 读取当前 video-spec-builder-personal 的 video-spec 模板和 spec-rules，沿用现有统一规格契约。
+3. 读取当前 video-spec-director-dev 的 video-spec 模板和 spec-rules，沿用现有统一规格契约。
 
 ## 文稿预审
 

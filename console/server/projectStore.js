@@ -57,7 +57,7 @@ export class ProjectStore {
       throw error;
     }
     const created = now();
-    const manifest = { schema_version: 1, id: slugValue, title: normalizedTitle, name: normalizedTitle, created_at: created, updated_at: created, status: 'ready', active_run_id: null, skills: skills || ['video-spec-builder-personal', 'hyperframes'], assets: [], storyboard_path: 'storyboard.json', spec_path: 'video-spec.md', composition_path: 'hyperframes/', latest_output: null };
+    const manifest = { schema_version: 1, id: slugValue, title: normalizedTitle, name: normalizedTitle, created_at: created, updated_at: created, status: 'ready', active_run_id: null, skills: skills || ['video-spec-director-dev', 'hyperframes'], assets: [], storyboard_path: 'storyboard.json', spec_path: 'video-spec.md', composition_path: 'hyperframes/', latest_output: null };
     await Promise.all(['analysis', 'hyperframes', 'runs'].map((name) => ensureDir(path.join(projectDir, name))));
     await atomicWriteJson(path.join(projectDir, 'project.json'), manifest);
     await Promise.all([

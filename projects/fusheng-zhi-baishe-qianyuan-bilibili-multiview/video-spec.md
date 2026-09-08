@@ -56,7 +56,7 @@
 
 ### 待生成素材
 
-- narration-shared.md、narration-module-culture.md、narration-module-adaptation.md：已写入项目目录；使用 tools/aliyun_tts.py 生成普通话旁白，首选 qwen-audio-3.0-tts-plus，voice ID 需按当前账号查询后锁定，输出至 projects/fusheng-zhi-baishe-qianyuan-bilibili-multiview/audio/。
+- narration-shared.md、narration-module-culture.md、narration-module-adaptation.md：已写入项目目录；使用 tools/aliyun_tts.py 生成普通话旁白，模型为 qwen-audio-3.0-tts-plus，voice 为 qwen-audio-3.0-tts-plus-longhuiyanxing（龙辉焰杏，沉稳解说音）；试听输出为 projects/fusheng-zhi-baishe-qianyuan-bilibili-multiview/audio/auditions/longhuiyanxing-documentary.mp3，完整版本输出至项目 audio/。
 - 字幕：由最终TTS音频转录生成逐词时间戳字幕；输出至项目 audio/，与旁白版本同名。
 - 文化时间线、关系图、纸张纹理：按 Folk Frequency 预设程序化生成，不伪造历史文物照片。
 
@@ -569,7 +569,7 @@
 
 ## 7. 音频时间轴
 
-- 旁白：使用 narration-shared.md 的共同段落，以及 narration-module-culture.md 或 narration-module-adaptation.md 之一；生成前运行 python tools/aliyun_tts.py models 与 voices 查询当前授权。首选模型 qwen-audio-3.0-tts-plus；voice ID、速率和最终文件名待查询/试听后锁定；旁白总时长覆盖0.0-240.0s，音量以清晰压过BGM为准。
+- 旁白：使用 narration-shared.md 的共同段落，以及 narration-module-culture.md 或 narration-module-adaptation.md 之一；使用 qwen-audio-3.0-tts-plus 与 qwen-audio-3.0-tts-plus-longhuiyanxing 合成，MP3、24000 Hz、单声道。试听文件已生成；完整 culture/adaptation 文件名和实际时长在合成后回写。旁白总时长覆盖0.0-240.0s，音量以清晰压过BGM为准。
 - 背景音乐：待搜索的东方氛围器乐，0.0-240.0s；旁白出现时duck到0.10-0.15，模块卡和片尾可升至0.18-0.20；0.0-2.0s淡入，239.0-240.0s淡出；不得使用预告原声。
 - 音效：0.0s纸张落桌；39.0s水滴与BGM错位；63.0s金属擦响；83.0s印章；90.0s模块切换反白闪屏并静音；100-171s文化模块木刻/纸鼓；183-199s观点段低音弦响；233-240s问句回声与水滴收尾。所有音效均需与对应Scene触发点一致。
 
@@ -581,7 +581,7 @@
 
 ## 9. 开放问题
 
-- 音频时间轴 / 旁白：阿里云当前账号可用的模型与voice ID、语速和输出文件待查询/试听。
+- 音频时间轴 / 旁白：模型与voice ID已锁定；完整 culture/adaptation 旁白文件及其实际时长待合成后回写。
 - Scene 02、04、06、11B、14B、19 / 源时间映射：两条公开预告的逐镜source_in/source_out待人工审片。
 - 素材清单 / 待搜索素材：文化地标、白蛇传传播史图像、BGM的最终下载文件和授权记录待补齐。
 - 素材使用边界 / 发布：现有两条公开视频来自非片方账号，只作为本地样片和镜头验证；公开发布前需替换为片方授权或明确允许引用的素材。

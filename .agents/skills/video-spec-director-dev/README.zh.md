@@ -2,7 +2,7 @@
 
 [English](README.md) · **中文**
 
-# video-spec-builder-personal
+# video-spec-director-dev
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen)](LICENSE) ![Agent Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet) [![skills.sh Compatible](https://img.shields.io/badge/skills.sh-Compatible-brightgreen)](https://skills.sh)
 
@@ -12,7 +12,7 @@
 
 你心里有个念头,想做个产品片、发条抖音、做个公司介绍。可念头是模糊的。真要落地,每个镜头几秒、画面上摆什么、先讲什么后讲什么,这些细节你未必想得全,也未必说得出来。
 
-video-spec-builder-personal 就是来陪你过这一关的。启用之后,你在 Codex 或者 Claude Code 里说一句"我想做个视频",它就接管对话,像编导听你讲 brief 那样一路追问:这视频给谁看?多长?最想让人记住哪句话?哪个镜头是重点?你答不上来的、压根没想到的地方,它会停下来提醒你、帮你补上。
+video-spec-director-dev 就是来陪你过这一关的。启用之后,你在 Codex 或者 Claude Code 里说一句"我想做个视频",它就接管对话,像编导听你讲 brief 那样一路追问:这视频给谁看?多长?最想让人记住哪句话?哪个镜头是重点?你答不上来的、压根没想到的地方,它会停下来提醒你、帮你补上。
 
 来回聊下来,你那个模糊的念头会变成一份 `video-spec.md`:精确到秒、每个镜头都写明白的分镜脚本。这份脚本交给 HyperFrames,就能渲染成真正的视频。
 
@@ -33,14 +33,14 @@ video-spec-builder-personal 就是来陪你过这一关的。启用之后,你在
 
 ## 工作流程
 
-整件事是两个 skill 接力。video-spec-builder-personal 在上游,把你的想法变成脚本;HyperFrames 在下游,把脚本变成视频。
+整件事是两个 skill 接力。video-spec-director-dev 在上游,把你的想法变成脚本;HyperFrames 在下游,把脚本变成视频。
 
 ```
         你:"我想做个视频"
                 │
                 ▼
    ┌────────────────────────┐
-   │ video-spec-builder-personal │ 追问 + 拆镜头,陪你想清楚
+   │ video-spec-director-dev │ 追问 + 拆镜头,陪你想清楚
    └────────────────────────┘
                 │
                 ▼
@@ -61,7 +61,7 @@ video-spec-builder-personal 就是来陪你过这一关的。启用之后,你在
 
 这个 skill 我主要在 **Codex** 里用,其次是 **Claude Code**,这两个是它最顺手的场景。
 
-这个个人版已经在当前项目的 `.agents/skills/video-spec-builder-personal/` 中。只需确保 HyperFrames(下游负责渲染)已安装:
+这个个人版已经在当前项目的 `.agents/skills/video-spec-director-dev/` 中。只需确保 HyperFrames(下游负责渲染)已安装:
 
 ```bash
 npx skills add heygen-com/hyperframes
@@ -103,7 +103,7 @@ npx skills add heygen-com/hyperframes
 /hyperframes
 ```
 
-> 在 Claude Code 里,除了说人话自动触发,也可以直接打 `/video-spec-builder-personal` 调用。
+> 在 Claude Code 里,除了说人话自动触发,也可以直接打 `/video-spec-director-dev` 调用。
 
 ## HyperFrames 能做什么、做不到什么
 
@@ -181,7 +181,7 @@ HyperFrames 内置了 8 套主题,报个名字就能用:
 ## 仓库结构
 
 ```
-video-spec-builder-personal/
+video-spec-director-dev/
 ├── SKILL.md                  技能主文件,AI 从这里读起
 ├── README.md                 English
 ├── README.zh.md              中文

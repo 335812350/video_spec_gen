@@ -7,9 +7,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / ".agents" / "skills" / "video-production-dispatcher" / "references" / "workflow-registry.md"
 DISPATCHER = ROOT / ".agents" / "skills" / "video-production-dispatcher" / "SKILL.md"
-PERSONAL = ROOT / ".agents" / "skills" / "video-spec-builder-personal" / "SKILL.md"
-TEMPLATE = ROOT / ".agents" / "skills" / "video-spec-builder-personal" / "templates" / "video-spec-template.md"
-LAYOUT = ROOT / ".agents" / "skills" / "video-spec-builder-personal" / "references" / "project-layout.md"
+PERSONAL = ROOT / ".agents" / "skills" / "video-spec-director-dev" / "SKILL.md"
+TEMPLATE = ROOT / ".agents" / "skills" / "video-spec-director-dev" / "templates" / "video-spec-template.md"
+LAYOUT = ROOT / ".agents" / "skills" / "video-spec-director-dev" / "references" / "project-layout.md"
 
 
 class WorkflowRoutingTests(unittest.TestCase):

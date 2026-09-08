@@ -5,7 +5,7 @@ description: Use when a video workflow needs Alibaba Cloud Model Studio TTS, mod
 
 # 阿里云 TTS
 
-把阿里云百炼的模型、音色和复刻操作收敛到仓库现有的统一入口。需要生成旁白时读取本 skill；影片需求收集、分镜和节奏规则仍由 `video-spec-builder-personal` 负责。
+把阿里云百炼的模型、音色和复刻操作收敛到仓库现有的统一入口。需要生成旁白时读取本 skill；影片需求收集、分镜和节奏规则仍由 `video-spec-director-dev` 负责。
 
 ## 边界
 

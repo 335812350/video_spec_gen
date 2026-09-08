@@ -22,7 +22,7 @@ production_mode: script-led
 
 1. 读取仓库 `AGENTS.md`，确认 `film-slug`、`project-slug`、目标平台和交付目标。
 2. 读取 `projects/<project-slug>/project.json`、已有 `edit-plan.md`、`video-spec.md` 和 `production/state.json`；没有项目时先与用户确认项目身份，再在 `projects/<project-slug>/` 建立工作文件。
-3. 新影片先执行 `../video-spec-builder-personal/references/film-research-enrichment.md`，并保留资料来源于 `assets/<film-slug>/references/`。
+3. 新影片先执行 `../video-spec-director-dev/references/film-research-enrichment.md`，并保留资料来源于 `assets/<film-slug>/references/`。
 4. 只复用已验证的本地分析和可用字幕。`assets/<film-slug>/analysis/` 只用于定位候选，关键剧情、动作、道具、身份变化和结局必须回看带声音的连续原片。
 5. 使用本 skill 的 `templates/state.json` 建立轻量阶段记录。该文件只登记当前阶段、下一动作、已确认选择和采用文件路径；它不是全局状态框架，也不包含哈希或锁。
 

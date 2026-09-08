@@ -191,7 +191,7 @@ TTS、字幕、转录、BGM、SFX、媒体处理、动画、关键帧、转场�
 - [共享能力与资源目录](docs/共享能力与资源目录.md)
 - [工作流注册表](.agents/skills/video-production-dispatcher/references/workflow-registry.md)
 - [影视解说工作流](docs/film-commentary-workflow.md)
-- [video-spec-builder-personal 中文 README](.agents/skills/video-spec-builder-personal/README.zh.md)
+- [video-spec-director-dev 中文 README](.agents/skills/video-spec-director-dev/README.zh.md)
 - [阿里云 TTS CLI](docs/aliyun/tts-cli.md)
 
 ## 许可证
