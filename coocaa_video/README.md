@@ -38,32 +38,44 @@ video-spec-director  生成 / 迭代 video-spec.md
 HyperFrames          渲染成视频
 ```
 
+## 前置要求
+
+### 必需
+
+- **Codex CLI**：已安装并登录
+- **Node.js 22+**：HyperFrames 需要
+- **FFmpeg**：视频处理
+
 ## 安装
 
-### 方式一：当前项目安装（推荐）
+### 只安装指定 Skill（推荐）
 
-只安装到当前打开的视频工作区项目目录，版本和影响范围都更容易控制：
-
-```powershell
-npx skills add https://github.com/335812350/video_spec_gen --agent codex --copy --yes
-```
-
-### 方式二：全局安装（备选）
-
-安装到当前用户的 Codex 全局 Skill 目录，之后任意文件夹都可以使用，但会影响所有项目：
-
-```powershell
-npx skills add https://github.com/335812350/video_spec_gen --agent codex --global --copy --yes
-```
-
-### 只安装指定 Skill
+只安装业务 Skill，不影响其他内部开发版本：
 
 ```powershell
 npx skills add https://github.com/335812350/video_spec_gen --skill video-workspace --agent codex --copy --yes
 npx skills add https://github.com/335812350/video_spec_gen --skill video-spec-director --agent codex --copy --yes
 ```
 
-安装完成后，重新打开 Codex 或新建一个 Codex 任务，让 Codex 重新扫描 Skill。
+### 安装 HyperFrames（渲染必需）
+
+```powershell
+npx skills add heygen-com/hyperframes
+```
+
+## 配置
+
+### API Key（可选）
+
+`.env.local` 中配置：
+
+```bash
+# 阿里云 DashScope / Model Studio，用于 AI 配音
+# 不填写时使用免费的 Edge TTS（机器味较重）
+DASHSCOPE_API_KEY=
+```
+
+获取方式：阿里云百炼平台 → API-KEY 管理
 
 ## 第一次使用
 
@@ -168,25 +180,51 @@ Codex 会进入迭代模式，更新 `video-spec.md`，不会整段覆盖已有�
 把现有 spec 改成更适合抖音的 30 秒版本
 ```
 
+## 完整流程
+
+```text
+1. 安装 Skill（video-workspace + video-spec-director + hyperframes）
+2. 新建文件夹，用 Codex 打开
+3. 初始化工作区：创建 assets/、projects/、outputs/ 等目录
+4. 放入素材：assets/<film-slug>/
+5. 生成 spec：Codex 追问并生成 video-spec.md
+6. 渲染视频：/hyperframes 或 npx hyperframes render
+```
+
 ## 使用边界
+## 常见问题
 
-- 用户不需要 clone 开发仓库；Skill 安装后在本地文件夹使用。
-- 不要把真实 `.env.local`、API Key、用户素材或渲染产物提交到 Git。
-- `setup` / `doctor` 只做环境检查和初始化；安装系统软件前应获得用户确认。
-- 最终视频版本写入 `outputs/`，不覆盖历史版本。
+**Q: 安装失败怎么办？**
 
-## 故障排查
+确认已安装 Node.js 22+，然后重试：
 
-如果 Codex 没有触发 Skill：
-
-1. 确认安装命令执行成功。
-2. 重新打开 Codex 或新建任务。
-3. 明确说出 Skill 名称，例如：
-
-```text
-使用 video-workspace 初始化当前文件夹
+```powershell
+node --version
+npx skills add https://github.com/335812350/video_spec_gen --skill video-workspace --agent codex --copy --yes
 ```
 
-```text
-使用 video-spec-director 生成 video-spec.md
+**Q: 没有 FFmpeg 怎么办？**
+
+Windows：
+
+```powershell
+winget install ffmpeg
 ```
+
+macOS：
+
+```bash
+brew install ffmpeg
+```
+
+**Q: 渲染失败怎么办？**
+
+1. 确认已安装 HyperFrames：`npx skills add heygen-com/hyperframes`
+2. 检查 `video-spec.md` 是否完整
+3. 运行 `npx hyperframes doctor` 检查环境
+
+**Q: AI 配音生成失败？**
+
+- 检查 `.env.local` 中的 `DASHSCOPE_API_KEY` 是否填写正确
+- 不填则使用免费的 Edge TTS（机器味较重）
+
