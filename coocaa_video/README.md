@@ -66,17 +66,50 @@ HyperFrames 是渲染必需。安装后 Codex 可以调用它进行预览和渲�
 
 ## 配置
 
-### API Key（可选）
+### 配音方式
 
-`.env.local` 中配置：
+视频旁白有两种方式，根据需求选择：
 
-```bash
-# 阿里云 DashScope / Model Studio，用于 AI 配音
-# 不填写时使用免费的 Edge TTS（机器味较重）
-DASHSCOPE_API_KEY=
-```
+#### 方式一：免费 Edge TTS（默认）
 
-获取方式：阿里云百炼平台 → API-KEY 管理
+- 不需要配置任何东西，直接使用
+- 机器味较重，适合快速测试或内部使用
+- 在追问中选择 AI 配音即可
+
+#### 方式二：付费阿里云 TTS（推荐正式使用）
+
+- 音色更自然，支持多种音色和声音复刻
+- 需要额外安装 Skill 并填写 API Key
+
+**安装步骤：**
+
+1. 安装阿里云 TTS Skill
+
+   ```powershell
+   npx skills add https://github.com/335812350/video_spec_gen --skill aliyun-tts --agent codex --copy --yes
+   ```
+
+2. 复制配置模板
+
+   ```powershell
+   Copy-Item .env.example .env.local
+   ```
+
+3. 填写 API Key
+
+   打开 .env.local，填入你的阿里云 Key：
+
+   ```bash
+   DASHSCOPE_API_KEY=你的密钥
+   ```
+
+4. 获取 Key
+
+   阿里云百炼平台 → 控制台 → API-KEY 管理 → 创建新的 API-KEY
+
+5. 使用
+
+   在追问中选择 AI 配音，Codex 会自动调用阿里云 TTS 生成更自然的旁白
 
 ## 使用方法
 
