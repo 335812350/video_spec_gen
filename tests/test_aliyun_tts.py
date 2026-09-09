@@ -223,7 +223,12 @@ class AliyunTTSTests(unittest.TestCase):
 
     def test_clone_qwen_tts_local_audio_uses_data_uri_and_target_model(self):
         transport = FakeTransport([FakeResponse({"output": {"voice_id": "demo_voice"}})])
-        with tempfile.TemporaryDirectory() as directory:
+        with tempfile.TemporaryDirectory() as directory, patch(
+            "tools.aliyun_tts.subprocess.run",
+            return_value=SimpleNamespace(
+                stdout='{"streams":[{"codec_type":"audio","duration":"1.2","sample_rate":"24000","channels":1}]}'
+            ),
+        ):
             audio = Path(directory) / "sample.wav"
             audio.write_bytes(b"RIFF" + b"\x00" * 4 + b"WAVE" + b"\x00" * 56)
             result = self.client(transport).clone(
@@ -265,6 +270,37 @@ class AliyunTTSTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exactly one"):
             api.clone(target_model="qwen3-tts-flash", prefix="demo")
 
+
+
+    def test_skill_script_loads_dotenv_from_current_working_directory(self):
+        import importlib.util
+        import os
+        from pathlib import Path
+
+        skill_script = Path(__file__).resolve().parents[1] / ".agents" / "skills" / "aliyun-tts" / "scripts" / "aliyun_tts.py"
+        self.assertTrue(skill_script.is_file())
+        spec = importlib.util.spec_from_file_location("skill_aliyun_tts", skill_script)
+        module = importlib.util.module_from_spec(spec)
+        import sys
+        sys.modules[spec.name] = module
+        spec.loader.exec_module(module)
+
+        with tempfile.TemporaryDirectory() as directory:
+            env_file = Path(directory) / ".env.local"
+            env_file.write_text(
+                "DASHSCOPE_API_KEY=file-secret\nDASHSCOPE_BASE_URL=https://file.example/api/v1\n",
+                encoding="utf-8",
+            )
+            old_cwd = Path.cwd()
+            os.chdir(directory)
+            try:
+                with patch.dict("os.environ", {}, clear=True):
+                    config = module.load_config()
+            finally:
+                os.chdir(old_cwd)
+
+        self.assertEqual(config.api_key, "file-secret")
+        self.assertEqual(config.base_url, "https://file.example/api/v1")
 
 if __name__ == "__main__":
     unittest.main()

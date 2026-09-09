@@ -1,6 +1,6 @@
 # 阿里云语音合成 CLI
 
-仓库内的语音生成统一使用 `tools/aliyun_tts.py`，不再依赖 Edge TTS。默认请求北京业务空间的 HTTP 非流式接口，必要时可用 `--stream` 使用 SSE。
+仓库内的语音生成统一使用 `.agents/skills/aliyun-tts/scripts/aliyun_tts.py`，不再依赖 Edge TTS。默认请求北京业务空间的 HTTP 非流式接口，必要时可用 `--stream` 使用 SSE。
 
 ## 配置
 
@@ -17,7 +17,7 @@ DASHSCOPE_API_KEY=你的Key
 `--voice` 必须显式提供，避免误用不属于当前账号的示例音色：
 
 ```powershell
-python tools/aliyun_tts.py synthesize `
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py synthesize `
   --model qwen-audio-3.0-tts-flash `
   --voice longanhuan_v3.6 `
   --text "你好，欢迎使用语音合成。" `
@@ -33,8 +33,8 @@ python tools/aliyun_tts.py synthesize `
 ## 模型与音色
 
 ```powershell
-python tools/aliyun_tts.py models
-python tools/aliyun_tts.py voices --model voice-enrollment
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py models
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py voices --model voice-enrollment
 ```
 
 `voices` 只查询自定义音色；系统音色直接填写给 `--voice`。
@@ -44,7 +44,7 @@ python tools/aliyun_tts.py voices --model voice-enrollment
 Qwen-Audio/CosyVoice 使用可访问的音频 URL，不会自动上传本地文件，也不需要 OSS 配置：
 
 ```powershell
-python tools/aliyun_tts.py clone `
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py clone `
   --target-model cosyvoice-v3-flash `
   --prefix my_voice `
   --audio-url https://example.com/reference.wav
@@ -53,7 +53,7 @@ python tools/aliyun_tts.py clone `
 Qwen-TTS 支持本地文件，CLI 会执行扩展名、非空、10 MB 大小检查，并转成 Data URI：
 
 ```powershell
-python tools/aliyun_tts.py clone `
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py clone `
   --target-model qwen3-tts-flash `
   --prefix my_voice `
   --audio .\reference.wav

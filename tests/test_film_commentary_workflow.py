@@ -81,7 +81,7 @@ class FilmCommentaryWorkflowTests(unittest.TestCase):
             encoding="utf-8"
         )
 
-        self.assertIn("tools/aliyun_tts.py", voice)
+        self.assertIn(".agents/skills/aliyun-tts/scripts/aliyun_tts.py", voice)
         self.assertIn("npx hyperframes transcribe", voice)
         for unsupported_provider in ("Fish Audio", "MiniMax", "Volc", "Edge TTS"):
             self.assertNotIn(unsupported_provider, voice)

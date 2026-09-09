@@ -142,10 +142,10 @@ Copy-Item .env.example .env.local
 常用入口：
 
 ```powershell
-python tools/aliyun_tts.py models
-python tools/aliyun_tts.py voices --model voice-enrollment --target-model <model>
-python tools/aliyun_tts.py synthesize --model <model> --voice <voice> --text "你好，欢迎使用。" --out projects/<project-slug>/voice.mp3
-python tools/aliyun_tts.py clone --target-model <model> --prefix <name> --audio-url <url>
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py models
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py voices --model voice-enrollment --target-model <model>
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py synthesize --model <model> --voice <voice> --text "你好，欢迎使用。" --out projects/<project-slug>/voice.mp3
+python .agents/skills/aliyun-tts/scripts/aliyun_tts.py clone --target-model <model> --prefix <name> --audio-url <url>
 ```
 
 模型、voice ID、权限和配额必须运行时查询。`qwen-audio-*`、`cosyvoice-*` 和 `qwen3-tts-*` 的协议与音色规则不同，复刻音色必须与后续合成的目标模型完全匹配。详见 [阿里云 TTS CLI](docs/aliyun/tts-cli.md) 和 [阿里云 TTS Skill](.agents/skills/aliyun-tts/SKILL.md)。

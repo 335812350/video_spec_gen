@@ -67,6 +67,11 @@ video-spec-director-dev 就是来陪你过这一关的。启用之后,你在 Cod
 npx skills add heygen-com/hyperframes
 ```
 
+安装位置分两种。默认装到当前文件夹(项目级),只在你跑命令的那个项目里生效。如果你经常做视频,加 `-g` 装到全局,所有项目通用:
+```bash
+npx skills add heygen-com/hyperframes -g
+```
+
 这条命令装好后,Codex、Claude Code、Cursor 这些环境都能调用,不用一个工具一个工具地装。
 
 需要 Node 18 以上。
